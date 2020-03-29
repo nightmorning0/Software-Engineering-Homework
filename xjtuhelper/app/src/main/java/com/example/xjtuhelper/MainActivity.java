@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (id == 0) {
-                    ;
+                    startActivity(new Intent(MainActivity.this, NewsContentActivity.class));
                 }
                 else if (id == 1){
                     startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://nightmorning.site")));
