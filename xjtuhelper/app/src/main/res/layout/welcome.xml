@@ -3,18 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-<<<<<<< HEAD
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/xiaohui"
-        android:orientation="vertical"
-        tools:context=".WelcomeActivity" >
-=======
+
     android:layout_height="match_parent"
-    android:background="@drawable/main_bg_3">
->>>>>>> d547a3d39f0081068cf1d8671b298a38b5f34c40
+    android:background="@drawable/main_bg_2">
 
     <Button
         android:id="@+id/btn_close"
