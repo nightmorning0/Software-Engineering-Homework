@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/xiaohui"
         android:orientation="vertical"
-        tools:context=".WelecomeActivity" >
+        tools:context=".WelcomeActivity" >
 
     <Button
         android:id="@+id/btn_close"
