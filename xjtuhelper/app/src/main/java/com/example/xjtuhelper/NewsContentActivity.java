@@ -4,16 +4,21 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 
 public class NewsContentActivity extends AppCompatActivity {
+    private TextView Title;
+    private TextView Detail;
+    private TextView MainText;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,5 +55,12 @@ public class NewsContentActivity extends AppCompatActivity {
                 finish();
             }
         });
+        Title = findViewById(R.id.nc_tv_title);
+        Detail = findViewById(R.id.nc_tv_detail);
+        MainText = findViewById(R.id.nc_tv_maintext);
+        Typeface HanyiDicSong = Typeface.createFromAsset(getAssets(),"font/HanYi_dic_song.ttf");
+        Title.setTypeface(HanyiDicSong);
+        Detail.setTypeface(HanyiDicSong);
+        MainText.setTypeface(HanyiDicSong);
     }
 }
