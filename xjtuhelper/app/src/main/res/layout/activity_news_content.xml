@@ -9,21 +9,21 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_newscontent"
-        android:layout_width="409dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/colorAccent"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/abc_vector_test" />
 
     <ScrollView
         android:id="@+id/nc_sc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
+        android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_newscontent">
@@ -31,7 +31,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <TextView
                 android:id="@+id/nc_tv_title"
@@ -56,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:lineSpacingMultiplier="1.5"
-                android:text="maintext"
+                android:text="maintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintext"
                 android:textColor="#000000"
                 android:textSize="24sp" />
 

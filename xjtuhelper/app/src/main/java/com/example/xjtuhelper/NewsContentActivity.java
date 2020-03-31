@@ -21,7 +21,7 @@ public class NewsContentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_news_content);
         Toolbar toolbar = findViewById(R.id.toolbar_newscontent);
         toolbar.setTitle("请填写该通知所在目录");//设置主标题
-        toolbar.setLogo(R.drawable.xiaohui);
+        toolbar.setLogo(R.drawable.xiaohui_touming);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         final ScrollView sc = findViewById(R.id.nc_sc);
@@ -44,5 +44,11 @@ public class NewsContentActivity extends AppCompatActivity {
 
                 }
             });
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }
