@@ -25,7 +25,9 @@ public class NewsContentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_content);
         Toolbar toolbar = findViewById(R.id.toolbar_newscontent);
-        toolbar.setTitle("请填写该通知所在目录");//设置主标题
+        //设置主标题
+        toolbar.setTitle("请填写该通知所在目录");
+        //设置图标
         toolbar.setLogo(R.drawable.xiaohui_touming);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -49,12 +51,14 @@ public class NewsContentActivity extends AppCompatActivity {
 
                 }
             });
+        //设置返回键
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+        //设置字体
         Title = findViewById(R.id.nc_tv_title);
         Detail = findViewById(R.id.nc_tv_detail);
         MainText = findViewById(R.id.nc_tv_maintext);
