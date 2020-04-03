@@ -1,6 +1,7 @@
 package com.example.xjtuhelper;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 3; i < 10; i++){
             newstitle.add("第" + i + "条新闻");
         }
+
         // 设置 adapter
         ListAdapter adapter = new ArrayAdapter<String>(MainActivity.this,
                 android.R.layout.simple_list_item_1, newstitle);
