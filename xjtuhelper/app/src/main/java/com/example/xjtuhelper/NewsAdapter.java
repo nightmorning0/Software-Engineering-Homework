@@ -4,8 +4,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
+
 
 public class NewsAdapter extends BaseAdapter {
     private List<News> newsData;
@@ -39,6 +42,17 @@ public class NewsAdapter extends BaseAdapter {
     public View getView(int position, View convertview, ViewGroup viewGroup){
         // 将数据映射到自定义的 View 中，然后返回 View
         // 获得 ListView 中的 view
-        return null;
+        View news_item = newsInflater.inflate(R.layout.newslist_item, null);
+        // 获得新闻对象
+        News news = newsData.get(position);
+        // 获取 layout handle
+        ImageView news_pic = (ImageView) news_item.findViewById(R.id.news_pic);
+        TextView news_title = (TextView) news_item.findViewById(R.id.news_title);
+        TextView news_date = (TextView) news_item.findViewById(R.id.news_date);
+        // 将 item 的真实值置入
+        news_pic.setImageResource(news.getPic());
+        news_title.setText(news.getTitle());
+        news_date.setText((news.getDate()));
+        return news_item;
     }
 }
