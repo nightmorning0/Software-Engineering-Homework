@@ -32,6 +32,7 @@ public class NewsContentActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         final ScrollView sc = findViewById(R.id.nc_sc);
+        //返回顶部的FAB
         FloatingActionButton fab = findViewById(R.id.btn_nc_tothetop);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,9 +63,9 @@ public class NewsContentActivity extends AppCompatActivity {
         Title = findViewById(R.id.nc_tv_title);
         Detail = findViewById(R.id.nc_tv_detail);
         MainText = findViewById(R.id.nc_tv_maintext);
-        Typeface HanyiDicSong = Typeface.createFromAsset(getAssets(),"font/HanYi_dic_song.ttf");
-        Title.setTypeface(HanyiDicSong);
-        Detail.setTypeface(HanyiDicSong);
-        MainText.setTypeface(HanyiDicSong);
+        Typeface HanYiDicSong = Typeface.createFromAsset(getAssets(),"font/HanYi_dic_song.ttf");
+        Title.setTypeface(HanYiDicSong);
+        Detail.setTypeface(HanYiDicSong);
+        MainText.setTypeface(HanYiDicSong);
     }
 }

@@ -37,7 +37,6 @@ public class WelcomeActivity extends Activity{
 
             @Override
             public void onClick(View arg0) {
-
                 startActivity(home);
             }
         });
