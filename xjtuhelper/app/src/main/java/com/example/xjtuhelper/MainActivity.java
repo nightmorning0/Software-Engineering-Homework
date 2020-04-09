@@ -2,6 +2,7 @@ package com.example.xjtuhelper;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.InetAddresses;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.widget.ListView;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     String content = data.getString("content");
                     String date = data.getString("date");
                     String url = data.getString("url");
-                    news.add(new News(title, date, url));
+                    news.add(new News(title, date, url, content));
                 }
 
                 // 更新视图
@@ -81,43 +84,19 @@ public class MainActivity extends AppCompatActivity {
                 news_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // 王炜飞那里content还没好，先用浏览原网页的形式混过去
-                        int i = (int) id;
-                        String url = news.get(i).getUrl();
-                        startActivity( new Intent(Intent.ACTION_VIEW, Uri.parse(url)) );
+                        // 先用浏览原网页的形式混过去
+//                        int i = (int) id;
+//                        String url = news.get(i).getUrl();
+//                        startActivity( new Intent(Intent.ACTION_VIEW, Uri.parse(url)) );
+                        Intent i = new Intent();
+                        i.setClass(MainActivity.this, NewsContentActivity.class);
+                        i.putExtra("news", (Serializable) news.get((int) id));
+                        startActivity(i);
                     }
                 });
 
             }
         }, Constant.REMOTE_NEWS_GET);
-
-
-
-
-//        // 生成 ListView
-//        ListView newslist = (ListView) findViewById((R.id.news_list));
-//        // 简易版设置 adapter
-//        /*ListAdapter adapter = new ArrayAdapter<String>(MainActivity.this,
-//                android.R.layout.simple_list_item_1, newstitle);*/
-//
-//        // 设置自定义 adapter
-//        LayoutInflater inflater = getLayoutInflater();
-//        NewsAdapter adapter = new NewsAdapter(inflater, news);
-//
-//
-//        newslist.setAdapter(adapter);
-//        news = this.news;
-//        newslist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                // startActivity(new Intent(MainActivity.this, NewsContentActivity.class));
-//                // 先用浏览原网页的形式混过去
-////                int i = (int) id;
-////                String url = news.get(i).getUrl();
-////                startActivity( new Intent(Intent.ACTION_VIEW, Uri.parse(url)) );
-//            }
-//        });
     }
 
 

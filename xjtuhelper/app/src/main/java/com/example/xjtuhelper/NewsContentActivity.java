@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
@@ -19,12 +20,17 @@ public class NewsContentActivity extends AppCompatActivity {
     private TextView Title;
     private TextView Detail;
     private TextView MainText;
+    private News news;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_content);
         Toolbar toolbar = findViewById(R.id.toolbar_newscontent);
+        // 获取新闻数据
+        Intent i = getIntent();
+        news = (News) i.getSerializableExtra("news");
+
         //设置主标题
         toolbar.setTitle("请填写该通知所在目录");
         //设置图标
@@ -66,5 +72,11 @@ public class NewsContentActivity extends AppCompatActivity {
         Title.setTypeface(HanyiDicSong);
         Detail.setTypeface(HanyiDicSong);
         MainText.setTypeface(HanyiDicSong);
+
+        // 设置内容
+        Title.setText(news.getTitle());
+        MainText.setText(news.getContent());
+        Detail.setText(news.getDate());
+
     }
 }
