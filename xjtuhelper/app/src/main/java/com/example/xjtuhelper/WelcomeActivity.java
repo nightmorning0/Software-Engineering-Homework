@@ -1,4 +1,5 @@
 package com.example.xjtuhelper;
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -11,23 +12,36 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 public class WelcomeActivity extends Activity{
     private Button btn_close;
+    Calendar c = Calendar.getInstance();
+    int time =c.get(Calendar.HOUR_OF_DAY);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+//开始界面判断是否采用夜间模式
+        if(time>=6&&time<21){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+        if(time>=21||time<6){
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
         setContentView(R.layout.welcome);
+        btn_close = (Button) findViewById(R.id.btn_close);
 
         final Intent home = new Intent(this, MainActivity.class);
         Timer timer = new Timer();
-        btn_close = (Button) findViewById(R.id.btn_close);
 
 // 定时跳转
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
                 startActivity(home); //执行
+
             }
         };
         timer.schedule(task, 1000 * 3);

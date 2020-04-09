@@ -1,6 +1,5 @@
 package com.example.xjtuhelper;
 
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,6 @@ public class NewsAdapter extends BaseAdapter {
         this.newsData = data;
         this.newsInflater = inflater;
     }
-
 
     // BaseAdapter 定义需要重写的方法
     @Override
@@ -52,10 +50,24 @@ public class NewsAdapter extends BaseAdapter {
         TextView news_title = (TextView) news_item.findViewById(R.id.news_title);
         TextView news_date = (TextView) news_item.findViewById(R.id.news_date);
         // 将 item 的真实值置入
-        news_pic.setImageResource(R.drawable.xiaohui_touming_96);
+        news_pic.setImageResource(news.getPic());
         news_title.setText(news.getTitle());
         news_date.setText((news.getDate()));
         return news_item;
-
     }
+
+    public static String ToDBC(String input) {
+        char[] c =input.toCharArray();
+        for (int i = 0;i< c.length; i++) {
+            if (c[i] == 12288) {
+                c[i] = (char) 32;
+                continue;
+            }
+            if (c[i] > 65280 && c[i] < 65375)
+                c[i] = (char) (c[i] - 65248);
+        }
+        return new String(c);
+}
+
+
 }

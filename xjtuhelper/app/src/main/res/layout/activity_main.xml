@@ -11,7 +11,7 @@
         android:id="@+id/toolbar_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@color/colorToolbar"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,9 +19,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/view"
+        android:id="@+id/toolbar_shadow"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="5dp"
         android:background="@drawable/tool_bar_shadow"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_main" />
 
@@ -29,6 +29,8 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar_main">
 
         <ListView

@@ -1,18 +1,24 @@
 package com.example.xjtuhelper;
 
-public class News {
+import android.graphics.Typeface;
+
+import java.io.Serializable;
+
+public class News implements Serializable {
     private String title;
     private String date;
     private int pic_src;
     private String content;
     private String url;
-    public News(String title, String date, String url){
+    public News(String title, String date, String url, String content){
+        // 测试使用
         this.title = title;
         this.date = date;
-        this.pic_src = R.drawable.xiaohui;
-        this.content = "content";
+        this.pic_src = R.drawable.xiaohui_touming_96;
+        this.content = content;
         this.url = url;
     }
+
     public void setTitle(String title){
         this.title = title;
     }
