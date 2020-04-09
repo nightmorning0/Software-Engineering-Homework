@@ -24,6 +24,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/main_bg_4" />
+        android:src="@drawable/main_bg_4_s" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

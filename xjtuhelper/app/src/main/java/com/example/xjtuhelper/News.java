@@ -7,6 +7,7 @@ public class News {
     private String content;
     private String url;
     public News(String title, String date, String url){
+        // 测试使用
         this.title = title;
         this.date = date;
         this.pic_src = R.drawable.xiaohui;
