@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".NewsContentActivity">
 
@@ -11,7 +12,7 @@
         android:id="@+id/toolbar_newscontent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimaryDark"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
 
@@ -23,7 +24,7 @@
     <View
         android:id="@+id/toolbar_shadow"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="5dp"
         android:background="@drawable/tool_bar_shadow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +51,7 @@
                 android:gravity="center"
                 android:text="Title"
                 android:textColor="#FF0000"
-                android:textSize="36sp"
+                android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -59,7 +60,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="detail"
-                android:textSize="18sp" />
+                android:textColor="@color/colorTextSecondary"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/nc_tv_maintext"
@@ -67,8 +69,8 @@
                 android:layout_height="wrap_content"
                 android:lineSpacingMultiplier="1.5"
                 android:text="maintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintext"
-                android:textColor="#000000"
-                android:textSize="24sp" />
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>

@@ -1,5 +1,7 @@
 package com.example.xjtuhelper;
 
+import android.graphics.Typeface;
+
 import java.io.Serializable;
 
 public class News implements Serializable {
@@ -12,10 +14,11 @@ public class News implements Serializable {
         // 测试使用
         this.title = title;
         this.date = date;
-        this.pic_src = R.drawable.xiaohui;
+        this.pic_src = R.drawable.xiaohui_touming_96;
         this.content = content;
         this.url = url;
     }
+
     public void setTitle(String title){
         this.title = title;
     }

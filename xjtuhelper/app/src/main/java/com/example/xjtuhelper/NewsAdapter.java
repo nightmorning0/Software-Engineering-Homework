@@ -55,4 +55,19 @@ public class NewsAdapter extends BaseAdapter {
         news_date.setText((news.getDate()));
         return news_item;
     }
+
+    public static String ToDBC(String input) {
+        char[] c =input.toCharArray();
+        for (int i = 0;i< c.length; i++) {
+            if (c[i] == 12288) {
+                c[i] = (char) 32;
+                continue;
+            }
+            if (c[i] > 65280 && c[i] < 65375)
+                c[i] = (char) (c[i] - 65248);
+        }
+        return new String(c);
+}
+
+
 }
