@@ -10,7 +10,7 @@
         android:id="@+id/btn_close"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:background="@drawable/skip_button"
+        android:background="@drawable/skip_button1"
         android:contentDescription="@string/close_wele"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

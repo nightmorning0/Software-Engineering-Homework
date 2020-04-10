@@ -4,18 +4,18 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
-
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,23 +29,17 @@ public class NewsContentActivity extends AppCompatActivity {
     private TextView Detail;
     private TextView MainText;
     private News news;
-    //
-    //0->日间  1->夜间
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 
-
-    //绑定menu:menu_content
+//绑定menu:menu_content
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_content, menu);
         return true;
     }
-    //SharedPreferences mSharedPreferences = getSharedPreferences("daynight", Context.MODE_PRIVATE);
-    //SharedPreferences.Editor editor = mSharedPreferences.edit();
-    //editor.putString("daynight", day);
-    //editor.commit();
 
-    //设置夜间模式选项
+//设置夜间模式选项
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -69,18 +63,18 @@ public class NewsContentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_content);
         Toolbar toolbar = findViewById(R.id.toolbar_newscontent);
-        // 获取新闻数据
+// 获取新闻数据
         Intent i = getIntent();
         news = (News) i.getSerializableExtra("news");
 
-        //Toolbar设置主标题
+//Toolbar设置主标题
         toolbar.setTitle("请填写该通知所在目录");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         final ScrollView sc = findViewById(R.id.nc_sc);
 
-        //设置返回顶部的FAB
+//设置返回顶部的FAB
         FloatingActionButton fab = findViewById(R.id.btn_nc_tothetop);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +94,7 @@ public class NewsContentActivity extends AppCompatActivity {
                 }
             });
 
-        //Toolbar中设置返回键
+//Toolbar中设置返回键
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +102,8 @@ public class NewsContentActivity extends AppCompatActivity {
             }
         });
 
-        //设置字体
+
+//设置字体
         Title = findViewById(R.id.nc_tv_title);
         Detail = findViewById(R.id.nc_tv_detail);
         MainText = findViewById(R.id.nc_tv_maintext);
@@ -117,13 +112,63 @@ public class NewsContentActivity extends AppCompatActivity {
         Detail.setTypeface(HanyiDicSong);
         MainText.setTypeface(HanyiDicSong);
 
-        //设置内容
+//设置内容
         Title.setText(news.getTitle());
         MainText.setText(news.getContent());
         Detail.setText(news.getDate());
 
+//解决TextView排版混乱的问题
+        MainText.getViewTreeObserver().addOnGlobalLayoutListener(new OnTvGlobalLayoutListener());
     }
 
+//类：OnTvGlobalLayoutListener
+    private class OnTvGlobalLayoutListener implements ViewTreeObserver.OnGlobalLayoutListener {
+        @Override
+        public void onGlobalLayout() {
+            MainText.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            final String newText = autoSplitText(MainText);
+            if (!TextUtils.isEmpty(newText)) {
+                MainText.setText(newText);
+            }
+        }
+    }
+    private String autoSplitText(final TextView tv) {
+        final String rawText = tv.getText().toString();//原始文本
+        final Paint tvPaint = tv.getPaint();//paint，包含字体等信息
+        final int tvWidth = tv.getWidth() - tv.getPaddingLeft() - tv.getPaddingRight();//控件可用宽度
+
+//将原始文本按行拆分
+        String [] rawTextLines = rawText.replaceAll("\r", "").split("\n");
+        StringBuilder sbNewText = new StringBuilder();
+        for (String rawTextLine : rawTextLines) {
+            if (tvPaint.measureText(rawTextLine) <= tvWidth) {
+//如果整行宽度在控件可用宽度之内，就不处理了
+                sbNewText.append(rawTextLine);
+            } else {
+//如果整行宽度超过控件可用宽度，则按字符测量，在超过可用宽度的前一个字符处手动换行
+                float lineWidth = 0;
+                for (int cnt = 0; cnt != rawTextLine.length(); ++cnt) {
+                    char ch = rawTextLine.charAt(cnt);
+                    lineWidth += tvPaint.measureText(String.valueOf(ch));
+                    if (lineWidth <= tvWidth) {
+                        sbNewText.append(ch);
+                    } else {
+                        sbNewText.append("\n");
+                        lineWidth = 0;
+                        --cnt;
+                    }
+                }
+            }
+            sbNewText.append("\n");
+        }
+
+//把结尾多余的\n去掉
+        if (!rawText.endsWith("\n")) {
+            sbNewText.deleteCharAt(sbNewText.length() - 1);
+        }
+
+        return sbNewText.toString();
+    }
 
 
 

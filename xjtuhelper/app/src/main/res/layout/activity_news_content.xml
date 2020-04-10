@@ -34,6 +34,7 @@
         android:id="@+id/nc_sc"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_newscontent">
@@ -67,6 +68,7 @@
                 android:id="@+id/nc_tv_maintext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="right|left"
                 android:lineSpacingMultiplier="1.5"
                 android:text="maintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintext"
                 android:textColor="@color/colorTextPrimary"
