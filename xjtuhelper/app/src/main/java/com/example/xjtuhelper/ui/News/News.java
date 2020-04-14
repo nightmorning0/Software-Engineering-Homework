@@ -1,6 +1,8 @@
-package com.example.xjtuhelper;
+package com.example.xjtuhelper.ui.News;
 
 import android.graphics.Typeface;
+
+import com.example.xjtuhelper.R;
 
 import java.io.Serializable;
 

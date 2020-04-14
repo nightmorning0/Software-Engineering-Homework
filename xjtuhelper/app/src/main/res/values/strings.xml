@@ -3,4 +3,10 @@
     <string name="close_wele">立刻开始</string>
     <string name="night_mode">夜间模式</string>
     <string name="welcome_skip">跳过</string>
+    <string name="title_news">新闻</string>
+    <string name="title_map">地图</string>
+    <string name="title_community">圈子</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

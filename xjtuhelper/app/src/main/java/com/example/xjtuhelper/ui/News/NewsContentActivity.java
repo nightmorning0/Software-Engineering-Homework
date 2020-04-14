@@ -1,4 +1,4 @@
-package com.example.xjtuhelper;
+package com.example.xjtuhelper.ui.News;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +20,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.xjtuhelper.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
