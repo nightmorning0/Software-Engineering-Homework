@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
@@ -14,6 +15,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import java.io.Serializable;
@@ -27,6 +29,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.xjtuhelper.ui.Community.CommunityFragment;
+import com.example.xjtuhelper.ui.Map.MapFragment;
 import com.example.xjtuhelper.ui.News.News;
 import com.example.xjtuhelper.ui.News.NewsAdapter;
 import com.example.xjtuhelper.ui.News.NewsContentActivity;
@@ -51,8 +55,34 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("XJTU Helper");//设置主标题
         setSupportActionBar(toolbar);
 
+
+
+        // 底部导航
+        BottomNavigationView bottom_nav_view = findViewById(R.id.nav_view);
+        bottom_nav_view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int i = item.getItemId();
+                switch (item.getItemId()) {
+                    case R.id.menu_news:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, NewsFragment.newInstance(news)).commit();
+                        break;
+                    case R.id.menu_maps:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new MapFragment()).commit();
+                        break;
+                    case R.id.menu_community:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new CommunityFragment()).commit();
+                        break;
+                }
+                return true;
+            }
+        });
+
         // fragment 管理初始化
         final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+
+
 
         news = new ArrayList<>();
 
@@ -75,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                     String url = data.getString("url");
                     news.add(new News(title, date, url, content));
                 }
-                transaction.replace(R.id.news_fragment, NewsFragment.newInstance(news));
+                transaction.replace(R.id.container_fragment, NewsFragment.newInstance(news));
                 transaction.commit();
             }
         }, Constant.REMOTE_NEWS_GET);
