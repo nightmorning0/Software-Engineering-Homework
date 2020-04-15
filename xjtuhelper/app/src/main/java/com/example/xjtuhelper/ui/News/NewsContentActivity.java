@@ -20,6 +20,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.xjtuhelper.Application;
 import com.example.xjtuhelper.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -48,12 +49,14 @@ public class NewsContentActivity extends AppCompatActivity {
         if (id == R.id.tb_nightmode){
             if(mode == Configuration.UI_MODE_NIGHT_NO) {
                 Toast.makeText(this, "夜间模式", Toast.LENGTH_SHORT).show();
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                ((Application)getApplicationContext()).global_current_theme_code = AppCompatDelegate.MODE_NIGHT_YES;
                 recreate();
             }
             if(mode == Configuration.UI_MODE_NIGHT_YES) {
                 Toast.makeText(this, "日间模式", Toast.LENGTH_SHORT).show();
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                ((Application)getApplicationContext()).global_current_theme_code = AppCompatDelegate.MODE_NIGHT_NO;
                 recreate();
             }
         }
@@ -61,6 +64,8 @@ public class NewsContentActivity extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int current_theme = ((Application)getApplicationContext()).global_current_theme_code;
+        AppCompatDelegate.setDefaultNightMode(current_theme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_content);
         Toolbar toolbar = findViewById(R.id.toolbar_newscontent);
