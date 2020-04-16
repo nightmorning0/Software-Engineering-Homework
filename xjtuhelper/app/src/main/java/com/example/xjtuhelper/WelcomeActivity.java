@@ -16,13 +16,16 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 public class WelcomeActivity extends Activity{
     private Button btn_close;
+    private Button btn_close2;
     Calendar c = Calendar.getInstance();
     int time =c.get(Calendar.HOUR_OF_DAY);
+    private boolean main_activity_is_start;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        main_activity_is_start = false; // 用于判定主活动是否启动，避免点跳过重复启动主活动
 //开始界面判断是否采用夜间模式
         if(time>=6&&time<21){
             ((Application)getApplicationContext()).global_current_theme_code = AppCompatDelegate.MODE_NIGHT_NO;
@@ -34,6 +37,7 @@ public class WelcomeActivity extends Activity{
         }
         setContentView(R.layout.welcome);
         btn_close = (Button) findViewById(R.id.btn_close);
+        btn_close2 = (Button) findViewById(R.id.btn_close2);
 
         final Intent home = new Intent(this, MainActivity.class);
         Timer timer = new Timer();
@@ -42,8 +46,10 @@ public class WelcomeActivity extends Activity{
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                startActivity(home); //执行
-
+                if (!main_activity_is_start) {
+                    main_activity_is_start = true;
+                    startActivity(home); //执行
+                }
             }
         };
         timer.schedule(task, 1000 * 3);
@@ -53,9 +59,21 @@ public class WelcomeActivity extends Activity{
 
             @Override
             public void onClick(View arg0) {
-                startActivity(home);
+                if (!main_activity_is_start) {
+                    main_activity_is_start = true;
+                    startActivity(home); //执行
+                }
             }
         });
+        btn_close2.setOnClickListener(new OnClickListener() {
 
+            @Override
+            public void onClick(View arg0) {
+                if (!main_activity_is_start) {
+                    main_activity_is_start = true;
+                    startActivity(home); //执行
+                }
+            }
+        });
     }
 }

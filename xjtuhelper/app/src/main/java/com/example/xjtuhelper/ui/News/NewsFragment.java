@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.xjtuhelper.MainActivity;
 import com.example.xjtuhelper.R;
@@ -46,7 +49,7 @@ public class NewsFragment extends Fragment {
         else {
             news = new ArrayList<>();
         }
-        ListView news_list = root.findViewById(R.id.news_list);
+        final ListView news_list = root.findViewById(R.id.news_list);
         NewsAdapter adapter = new NewsAdapter(inflater, news);
         news_list.setAdapter(adapter);
         news_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -58,6 +61,10 @@ public class NewsFragment extends Fragment {
                 startActivity(i);
             }
         });
+
         return root;
+
+
     }
+
 }

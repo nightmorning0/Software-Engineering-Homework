@@ -10,10 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center|start"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="20dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="20dp">
 
         <ImageView
             android:id="@+id/news_pic"
@@ -32,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:singleLine="true"
+                android:lines="3"
                 android:text="news_title"
                 android:textColor="@color/colorTextPrimary"
                 android:textSize="14sp"
@@ -44,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:text="news_date"
                 android:textColor="@color/colorTextSecondary"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="normal" />
         </LinearLayout>
 
