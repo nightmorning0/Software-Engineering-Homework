@@ -5,9 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.Map.MapFragment">
 
-    <TextView
+    <com.amap.api.maps.MapView
+
+        android:id="@+id/map"
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="地图功能尚未开发" />
+
+        android:layout_height="match_parent"/>
 
 </FrameLayout>
