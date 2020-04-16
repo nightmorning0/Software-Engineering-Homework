@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/bg1"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".NewsContentActivity">
+    tools:context=".ui.News.NewsContentActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_newscontent"
@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="right|left"
                 android:lineSpacingMultiplier="1.5"
-                android:text="maintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintextmaintext"
+                android:text="maintext"
                 android:textColor="@color/colorTextPrimary"
                 android:textSize="18sp" />
 
