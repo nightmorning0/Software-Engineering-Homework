@@ -56,6 +56,7 @@ public class NewsAdapter extends BaseAdapter {
         news_title.setText(news.getTitle());
         news_date.setText((news.getDate()));
         return news_item;
+
     }
 
     public static String ToDBC(String input) {

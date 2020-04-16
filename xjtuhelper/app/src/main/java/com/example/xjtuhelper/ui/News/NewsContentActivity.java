@@ -74,7 +74,7 @@ public class NewsContentActivity extends AppCompatActivity {
         news = (News) i.getSerializableExtra("news");
 
 //Toolbar设置主标题
-        toolbar.setTitle("请填写该通知所在目录");
+        toolbar.setTitle("XJTU Helper");
         toolbar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

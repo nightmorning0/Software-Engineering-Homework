@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 public class WelcomeActivity extends Activity{
     private Button btn_close;
+    private Button btn_close2;
     Calendar c = Calendar.getInstance();
     int time =c.get(Calendar.HOUR_OF_DAY);
 
@@ -34,6 +35,7 @@ public class WelcomeActivity extends Activity{
         }
         setContentView(R.layout.welcome);
         btn_close = (Button) findViewById(R.id.btn_close);
+        btn_close2 = (Button) findViewById(R.id.btn_close2);
 
         final Intent home = new Intent(this, MainActivity.class);
         Timer timer = new Timer();
@@ -56,6 +58,12 @@ public class WelcomeActivity extends Activity{
                 startActivity(home);
             }
         });
+        btn_close2.setOnClickListener(new OnClickListener() {
 
+            @Override
+            public void onClick(View arg0) {
+                startActivity(home);
+            }
+        });
     }
 }

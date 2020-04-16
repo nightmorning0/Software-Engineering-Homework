@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar_main);
         toolbar.setTitle("XJTU Helper");//设置主标题
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorTextIcons));
         setSupportActionBar(toolbar);
 
         // 新闻初始化
@@ -130,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new CommunityFragment()).commit();
                 break;
         }
+
 
 
     }
