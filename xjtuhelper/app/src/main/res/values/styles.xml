@@ -6,6 +6,7 @@
         <item name="colorPrimary">#FFFEFB</item>
         <item name="colorPrimaryDark">#455A64</item>
         <item name="colorAccent">#9E9E9E</item>
+        <item name="actionMenuTextColor">#ffffff</item>
     </style>
 
 </resources>
