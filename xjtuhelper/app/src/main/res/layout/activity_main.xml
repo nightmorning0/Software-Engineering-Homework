@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/main_bg_2"
+        android:background="@drawable/main_bg_second"
         tools:context=".MainActivity">
 
         <androidx.appcompat.widget.Toolbar
@@ -76,6 +76,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/left_nav_bg"
         android:layout_gravity="left"
+        android:theme="@style/myNavigationDrawerStyle"
         app:headerLayout="@layout/head"
         app:menu="@menu/left_menu"
         android:fitsSystemWindows="true"/>
