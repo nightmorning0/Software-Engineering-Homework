@@ -6,6 +6,9 @@
         <item name="colorPrimary">#FFFEFB</item>
         <item name="colorPrimaryDark">#455A64</item>
         <item name="colorAccent">#9E9E9E</item>
-    </style>
 
+    </style>
+    <style name="myNavigationDrawerStyle" >
+        <item name="android:textSize">16sp</item>
+    </style>
 </resources>
