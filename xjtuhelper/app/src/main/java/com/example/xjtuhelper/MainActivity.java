@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -18,6 +19,7 @@ import android.view.WindowManager;
 import java.util.ArrayList;
 import java.util.List;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -41,8 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private List<News> news;
     private DrawerLayout mDrawerLayout;
     private RequestQueue connectQueue; // 请求队列
-    //ListView news_list;
-    //LayoutInflater inflater;
+    private User user_info;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int current_window = ((Application)getApplicationContext()).getGlobal_current_window;
@@ -59,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("XJTU Helper");//设置主标题
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorTextIcons));
         setSupportActionBar(toolbar);
+
+        // 用户信息初始化， 测试代码，测试完毕记得删除
+        user_info = new User("奥里给", "电信学院", Constant.CODE_GENDER_MALE);
 
         // 新闻初始化
         if ( ((Application)getApplicationContext()).global_news == null) {
@@ -113,7 +117,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 return true;
             }
-        });
+        })
+        ;
         //左部导航栏和点击事件
         mDrawerLayout = findViewById(R.id.main_drawer);
         final NavigationView left_nav_view = findViewById(R.id.left_nav_view);
@@ -121,8 +126,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mDrawerLayout.openDrawer(left_nav_view);
+                // test
+                TextView username = findViewById(R.id.username);
+                TextView college = findViewById(R.id.college);
+                username.setText(user_info.getName());
+                college.setText(user_info.getCollege());
             }
         });
+
         left_nav_view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -137,6 +148,11 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
+
+
+
         // 初始化窗口位置
         switch (current_window) {
             case R.id.menu_news:
