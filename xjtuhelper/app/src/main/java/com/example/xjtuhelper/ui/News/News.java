@@ -1,7 +1,5 @@
 package com.example.xjtuhelper.ui.News;
 
-import android.graphics.Typeface;
-
 import com.example.xjtuhelper.R;
 
 import java.io.Serializable;
@@ -16,7 +14,7 @@ public class News implements Serializable {
         // 测试使用
         this.title = title;
         this.date = date;
-        this.pic_src = R.drawable.xiaohui_touming_96;
+        this.pic_src = R.drawable.xiaohui_touming_small;
         this.content = content;
         this.url = url;
     }
