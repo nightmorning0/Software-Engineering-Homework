@@ -8,19 +8,26 @@
         android:id="@+id/tv_chat_msg_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="27dp"
         android:layout_toStartOf="@+id/chat_user_icon_right"
         android:layout_toLeftOf="@+id/chat_user_icon_right"
         android:background="@drawable/msg_right"
         android:gravity="center|start"
-        android:padding="10dp"
-        android:text="nihao"
-        android:textStyle="bold" />
+        android:paddingLeft="10dp"
+        android:paddingRight="20dp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:paddingStart="10dp"
+        android:paddingEnd="20dp" />
 
     <ImageView
         android:id="@+id/chat_user_icon_right"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_gravity="top"
         android:src="@drawable/xiaohui_touming_small" />
 

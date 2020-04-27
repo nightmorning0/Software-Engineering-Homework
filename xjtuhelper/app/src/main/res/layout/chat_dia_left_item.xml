@@ -15,11 +15,15 @@
         android:id="@+id/tv_chat_msg_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginRight="64dp"
         android:background="@drawable/msg_left"
         android:gravity="center"
-        android:padding="8dp"
-        android:text="你好" />
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:textColor="#000000"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp" />
 
 </LinearLayout>
