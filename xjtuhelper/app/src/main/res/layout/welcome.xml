@@ -8,9 +8,9 @@
 
     <Button
         android:id="@+id/btn_close"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="@drawable/skip_button"
+        android:layout_width="150dp"
+        android:layout_height="28dp"
+        android:background="@drawable/button_skip_down"
         android:contentDescription="@string/close_wele"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,9 +18,9 @@
 
     <Button
         android:id="@+id/btn_close2"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:background="@drawable/skip_button"
+        android:layout_width="150dp"
+        android:layout_height="28dp"
+        android:background="@drawable/skip_button_up"
         android:contentDescription="@string/close_wele"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

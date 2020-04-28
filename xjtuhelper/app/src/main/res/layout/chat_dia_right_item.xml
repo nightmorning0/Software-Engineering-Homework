@@ -15,12 +15,9 @@
         android:layout_toLeftOf="@+id/chat_user_icon_right"
         android:background="@drawable/msg_right"
         android:gravity="center|start"
-        android:paddingLeft="10dp"
-        android:paddingRight="20dp"
-        android:textColor="#000000"
-        android:textStyle="bold"
         android:paddingStart="10dp"
-        android:paddingEnd="20dp" />
+        android:paddingEnd="20dp"
+        android:textColor="#000000" />
 
     <ImageView
         android:id="@+id/chat_user_icon_right"
