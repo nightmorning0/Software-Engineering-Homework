@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         Animation animlogin = new TranslateAnimation(142,0,screen_y*(1/2),screen_y*(1/2));
         Animation animname = new TranslateAnimation(-280,0,screen_y*(1/2)-60,screen_y*(1/2)-60);
         Animation animpass = new TranslateAnimation(-280,0,screen_y*(1/2)+60,screen_y*(1/2)+60);
-        Animation animfgt = new TranslateAnimation(0,0,142,0);
+        Animation animfgt = new TranslateAnimation(0,0,82,0);
         //四个控件的移动时间
         animreg.setDuration(500);
         animlogin.setDuration(500);

@@ -45,8 +45,8 @@
 
     <Button
         android:id="@+id/btn_fgt_pswd"
-        android:layout_width="283dp"
-        android:layout_height="142dp"
+        android:layout_width="285dp"
+        android:layout_height="92dp"
         android:background="@drawable/btn_fgt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
@@ -65,10 +65,11 @@
         android:id="@+id/imageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:layout_marginBottom="37dp"
         app:layout_constraintBottom_toTopOf="@+id/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:srcCompat="@drawable/xiaohui_touming_big" />
 
     <ImageView
@@ -78,5 +79,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:srcCompat="@drawable/user_icon_out" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="285dp"
+        android:layout_height="92dp"
+        android:background="@drawable/top_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
