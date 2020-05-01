@@ -8,4 +8,5 @@
     <color name="colorDivider">#BDBDBD</color>
     <color name="colorToolbar">#607D8B</color>
     <color name="colorTextSecondary">#757575</color>
+    <color name="colorChatType">#FFFFFF</color>
 </resources>

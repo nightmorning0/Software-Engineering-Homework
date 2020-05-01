@@ -6,6 +6,8 @@
     <string name="title_news">新闻</string>
     <string name="title_map">地图</string>
     <string name="title_community">圈子</string>
+    <string name="chat_send">发送</string>
+    <string name="chat_default">说些什么吧！</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
