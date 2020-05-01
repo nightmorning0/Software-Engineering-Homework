@@ -1,22 +1,9 @@
 package com.example.xjtuhelper.ui.Community;
 
 public class PersonChat {
-    /**
-     * id
-     */
     private int id;
-    /**
-     * 姓名
-     */
     private String name;
-    /**
-     * 聊天内容
-     */
     private String chatMessage;
-    /**
-     *
-     * @return 是否为本人发送
-     */
     private boolean isMeSend;
     public int getId() {
         return id;

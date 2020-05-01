@@ -23,16 +23,33 @@ import java.util.List;
 public class CommunityFragment extends Fragment {
     private List<PersonChat> PersonChat;
     private Button ToChat;
+    private List<Comment> comments;
     public CommunityFragment() {
-
     }
 
+    public static CommunityFragment newInstance(List<Comment> comments) {
+        CommunityFragment f = new CommunityFragment();
+        Bundle args = new Bundle();
+        args.putSerializable("comments", (Serializable) comments);
+        f.setArguments(args);
+        return f;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_community, container, false);
+        if (getArguments() != null) {
+            comments = (List<Comment>) getArguments().getSerializable("comments");
+        }
+        else {
+            comments = new ArrayList<>();
+        }
+        final ListView comments_list = root.findViewById(R.id.comment_list);
+        CommentsAdapter adapter = new CommentsAdapter(inflater, comments);
+        comments_list.setAdapter(adapter);
+
         /*if (getArguments() != null) {
             PersonChat = (List<PersonChat>) getArguments().getSerializable("news");
         }

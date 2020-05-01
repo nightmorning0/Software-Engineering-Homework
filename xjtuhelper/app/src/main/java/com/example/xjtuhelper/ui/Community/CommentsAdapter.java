@@ -1,4 +1,4 @@
-package com.example.xjtuhelper.ui.News;
+package com.example.xjtuhelper.ui.Community;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,21 +11,20 @@ import com.example.xjtuhelper.R;
 
 import java.util.List;
 
+public class CommentsAdapter extends BaseAdapter {
+    private List<Comment> commentData;
+    private LayoutInflater commentInflater; //自定义评论列表布局
 
-public class NewsAdapter extends BaseAdapter {
-    private List<News> newsData;
-    private LayoutInflater newsInflater; //自定义新闻列表布局
-
-    public NewsAdapter(LayoutInflater inflater, List<News> data){
-        this.newsData = data;
-        this.newsInflater = inflater;
+    public CommentsAdapter(LayoutInflater inflater, List<Comment> data){
+        this.commentData = data;
+        this.commentInflater = inflater;
     }
 
     // BaseAdapter 定义需要重写的方法
     @Override
     public int getCount(){
         // 返回数据列表的大小
-        return newsData.size();
+        return commentData.size();
     }
 
     @Override
@@ -44,19 +43,19 @@ public class NewsAdapter extends BaseAdapter {
     public View getView(int position, View convertview, ViewGroup viewGroup){
         // 将数据映射到自定义的 View 中，然后返回 View
         // 获得 ListView 中的 view
-        View news_item = newsInflater.inflate(R.layout.newslist_item, null);
-        // 获得新闻对象
-        News news = newsData.get(position);
+        View comment_item = commentInflater.inflate(R.layout.commentlist_item, null);
+        // 获得评论对象
+        Comment comment = commentData.get(position);
         // 获取 layout handle
-        ImageView news_pic = (ImageView) news_item.findViewById(R.id.news_pic);
-        TextView news_title = (TextView) news_item.findViewById(R.id.news_title);
-        TextView news_date = (TextView) news_item.findViewById(R.id.news_date);
+        ImageView news_pic = (ImageView) comment_item.findViewById(R.id.comment_pic);
+        TextView username = (TextView) comment_item.findViewById(R.id.comment_username);
+        TextView comment_content = (TextView) comment_item.findViewById(R.id.comment_content);
+        TextView comment_time = (TextView) comment_item.findViewById(R.id.comment_time);
         // 将 item 的真实值置入
-        news_pic.setImageResource(news.getPic());
-        news_title.setText(news.getTitle());
-        news_date.setText((news.getDate()));
-        return news_item;
-
+        username.setText(comment.getUsername());
+        comment_content.setText(comment.getContent());
+        comment_time.setText(comment.getTime());
+        return comment_item;
     }
 
     public static String ToDBC(String input) {
@@ -71,6 +70,4 @@ public class NewsAdapter extends BaseAdapter {
         }
         return new String(c);
     }
-
-
 }

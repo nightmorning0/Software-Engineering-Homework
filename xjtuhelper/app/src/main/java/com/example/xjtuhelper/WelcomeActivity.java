@@ -72,7 +72,7 @@ public class WelcomeActivity extends Activity{
                 }
             }
         };
-        timer.schedule(task, 1000 * 3);
+        timer.schedule(task, 1000 * 1);
 
 // 直接跳转
         btn_close.setOnClickListener(new OnClickListener() {

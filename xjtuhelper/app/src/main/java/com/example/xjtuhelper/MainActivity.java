@@ -34,6 +34,7 @@ import com.example.xjtuhelper.ui.Login.LoginActivity;
 import com.example.xjtuhelper.ui.Map.MapFragment;
 import com.example.xjtuhelper.ui.News.News;
 import com.example.xjtuhelper.ui.News.NewsFragment;
+import com.example.xjtuhelper.ui.Community.Comment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -42,8 +43,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
+
 public class MainActivity extends AppCompatActivity {
     private List<News> news;
+    private List<Comment> comments;
     private DrawerLayout mDrawerLayout;
     private RequestQueue connectQueue; // 请求队列
     private User user_info;
@@ -97,6 +100,32 @@ public class MainActivity extends AppCompatActivity {
             news =  ((Application)getApplicationContext()).global_news;
         }
 
+        // Comments 初始化
+        if ( ((Application)getApplicationContext()).global_comments == null) {
+            comments = new ArrayList<>();
+            // volley 连接
+            // 初始化请求队列
+            connectQueue = Volley.newRequestQueue(this);
+            // 从服务器获取评论
+            getJSON(new VolleyCallback() {
+                @Override
+                public void onSuccess(JSONObject response) throws JSONException {
+                    JSONArray data_list = response.getJSONArray("comments");
+                    for (int i=0; i < data_list.length(); i++) {
+                        JSONObject data = data_list.getJSONObject(i);
+                        String comment_username = data.getString("username");
+                        String comment_content = data.getString("comment");
+                        String comment_time = data.getString("time");
+                        comments.add(new Comment(comment_content, comment_time, comment_username));
+                    }
+                    ((Application)getApplicationContext()).global_comments = comments;
+                }
+            }, Constant.REMOTE_COMMENTS_GET);
+        }
+        else {
+            news =  ((Application)getApplicationContext()).global_news;
+        }
+
         // 底部导航
         BottomNavigationView bottom_nav_view = findViewById(R.id.nav_view);
         bottom_nav_view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -113,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                         ((Application)getApplicationContext()).getGlobal_current_window = R.id.menu_maps;
                         break;
                     case R.id.menu_community:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new CommunityFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, CommunityFragment.newInstance(comments)).commit();
                         ((Application)getApplicationContext()).getGlobal_current_window = R.id.menu_community;
                         break;
                 }
@@ -168,11 +197,9 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new MapFragment()).commit();
                 break;
             case R.id.menu_community:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new CommunityFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, CommunityFragment.newInstance(comments)).commit();
                 break;
         }
-
-
 
     }
 
