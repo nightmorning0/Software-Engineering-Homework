@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
         mlogin = findViewById(R.id.btn_login);
         mreg = findViewById(R.id.btn_reg);
         mfgt = findViewById(R.id.btn_fgt_pswd) ;

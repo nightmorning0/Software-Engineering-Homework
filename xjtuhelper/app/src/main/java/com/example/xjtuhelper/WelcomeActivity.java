@@ -14,6 +14,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.example.xjtuhelper.ui.Login.LoginActivity;
+
 public class WelcomeActivity extends Activity{
     private Button btn_close;
     private Button btn_close2;
@@ -26,7 +28,7 @@ public class WelcomeActivity extends Activity{
 
         super.onCreate(savedInstanceState);
         main_activity_is_start = false; // 用于判定主活动是否启动，避免点跳过重复启动主活动
-//开始界面判断是否采用夜间模式
+        // 开始界面判断是否采用夜间模式
         if(time>=6&&time<21){
             ((Application)getApplicationContext()).global_current_theme_code = AppCompatDelegate.MODE_NIGHT_NO;
             //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -39,7 +41,7 @@ public class WelcomeActivity extends Activity{
         btn_close = (Button) findViewById(R.id.btn_close);
         btn_close2 = (Button) findViewById(R.id.btn_close2);
 
-        final Intent home = new Intent(this, MainActivity.class);
+        final Intent login = new Intent(this, LoginActivity.class);
         Timer timer = new Timer();
 
 // 定时跳转
@@ -48,7 +50,7 @@ public class WelcomeActivity extends Activity{
             public void run() {
                 if (!main_activity_is_start) {
                     main_activity_is_start = true;
-                    startActivity(home); //执行
+                    startActivity(login); //执行
                 }
             }
         };
@@ -61,7 +63,7 @@ public class WelcomeActivity extends Activity{
             public void onClick(View arg0) {
                 if (!main_activity_is_start) {
                     main_activity_is_start = true;
-                    startActivity(home); //执行
+                    startActivity(login); //执行
                 }
             }
         });
@@ -71,7 +73,7 @@ public class WelcomeActivity extends Activity{
             public void onClick(View arg0) {
                 if (!main_activity_is_start) {
                     main_activity_is_start = true;
-                    startActivity(home); //执行
+                    startActivity(login); //执行
                 }
             }
         });

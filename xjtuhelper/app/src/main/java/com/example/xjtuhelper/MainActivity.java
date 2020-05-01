@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorTextIcons));
         setSupportActionBar(toolbar);
 
-        // 用户信息初始化， 测试代码，测试完毕记得删除
-        user_info = new User("奥里给", "电信学院", Constant.CODE_GENDER_MALE);
+        // 用户信息初始化
+        user_info = ((Application) getApplicationContext()).user_info;
 
         // 新闻初始化
         if ( ((Application)getApplicationContext()).global_news == null) {
@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
             // volley 连接
             // 初始化请求队列
             connectQueue = Volley.newRequestQueue(this);
-            JsonObjectRequest newsRequest;
 
             // 从服务器获取今日的数据条目数
             getJSON(new VolleyCallback() {
@@ -148,9 +147,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
-
-
 
 
         // 初始化窗口位置

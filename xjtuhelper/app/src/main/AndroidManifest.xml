@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.xjtuhelper">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.Community.ChatActivity"></activity>
+        <activity android:name=".ui.Login.LoginActivity"></activity>
+        <activity android:name=".ui.Community.ChatActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"
@@ -29,6 +31,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.Login.LoginActivity"
+            tools:ignore="DuplicateActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".ui.News.NewsContentActivity" />
     </application>
