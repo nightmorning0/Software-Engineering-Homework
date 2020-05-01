@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -104,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 // 从服务器验证登录
                 getJSON(new MainActivity.VolleyCallback() {
-                    @SuppressLint("DefaultLocale")
+                    @SuppressLint({"DefaultLocale", "CommitPrefEdits"})
                     @Override
                     public void onSuccess(JSONObject response) throws JSONException {
                         int status = response.getInt("status");
@@ -115,8 +116,20 @@ public class LoginActivity extends AppCompatActivity {
                                 int gender = response.getInt("gender");
                                 String username = response.getString("username");
                                 Log.e("TAG", "username: "+username);
-                                db_msg = String.format("user:%s, gender:%d", username, gender);
-                                ((Application)getApplicationContext()).user_info = new User(username, user, college, gender);
+                                db_msg = "登录成功";
+                                // 将信息状态更新到全局
+                                ((Application)getApplicationContext()).user_info = new User(username, user, college, gender, pwd);
+
+                                // 将信息缓存，下次登录自动登录
+                                SharedPreferences user_info = LoginActivity.this.getSharedPreferences("user_info", MODE_PRIVATE);
+                                SharedPreferences.Editor user_info_editor = user_info.edit();
+                                user_info_editor.putBoolean("login", true);
+                                user_info_editor.putString("username", username);
+                                user_info_editor.putString("id", user);
+                                user_info_editor.putString("college", college);
+                                user_info_editor.putInt("gender", gender);
+                                user_info_editor.putString("pwd", pwd);
+                                user_info_editor.apply();
                                 Intent home = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(home);
                                 break;

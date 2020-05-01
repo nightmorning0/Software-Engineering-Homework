@@ -5,12 +5,14 @@ public class User {
     private String id;
     private String college;
     private int gender;
+    private String pwd;
 
-    public User(String name, String id, String college, int gender) {
+    public User(String name, String id, String college, int gender, String pwd) {
         this.name = name;
         this.college = college;
         this.gender = gender;
         this.id = id;
+        this.pwd = pwd;
     }
     public void setName(String name) {
         this.name = name;

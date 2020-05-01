@@ -1,5 +1,7 @@
 package com.example.xjtuhelper;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.xjtuhelper.ui.Community.CommunityFragment;
+import com.example.xjtuhelper.ui.Login.LoginActivity;
 import com.example.xjtuhelper.ui.Map.MapFragment;
 import com.example.xjtuhelper.ui.News.News;
 import com.example.xjtuhelper.ui.News.NewsFragment;
@@ -142,7 +145,14 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "用户信息", Toast.LENGTH_SHORT).show();
                 }
                 if (id == R.id.log_out){
-                    Toast.makeText(getApplicationContext(), "登出按钮", Toast.LENGTH_SHORT).show();
+                    // 清空用户信息并跳转登录界面
+                    SharedPreferences user_info = getSharedPreferences("user_info", MODE_PRIVATE);
+                    SharedPreferences.Editor user_info_editor = user_info.edit();
+                    user_info_editor.clear();
+                    user_info_editor.apply();
+                    Intent login_intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(login_intent);
+                    finish();
                 }
                 return true;
             }
