@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/main_bg_second"
+        android:background="@drawable/main_bg"
         tools:context=".MainActivity">
 
         <androidx.appcompat.widget.Toolbar

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.xjtuhelper">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+<<<<<<< HEAD
 
     <!--地图包、搜索包需要的基础权限-->
 
@@ -27,6 +30,8 @@
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
+=======
+>>>>>>> 202b212f022d6f25cf57ed309f54e4cb70f7d9c2
     <application
         android:name=".Application"
         android:allowBackup="true"
@@ -34,6 +39,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+<<<<<<< HEAD
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
 
@@ -44,16 +50,47 @@
         <uses-library android:name="org.apache.http.legacy"
             android:required="false"/>
         <activity android:name=".WelcomeActivity" android:noHistory="true">
+=======
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <!-- 欢迎界面注册 -->
+        <activity
+            android:name=".WelcomeActivity"
+            android:noHistory="true">
+>>>>>>> 202b212f022d6f25cf57ed309f54e4cb70f7d9c2
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 登录界面注册 -->
+        <activity
+            android:name=".ui.Login.LoginActivity"
+            android:noHistory="true">
+        </activity>
+
+        <!-- 主界面注册 -->
         <activity android:name=".MainActivity" />
+<<<<<<< HEAD
         <activity android:name=".ui.News.NewsContentActivity">
 
         </activity>
+=======
+
+        <!-- 新闻内容界面注册 -->
+        <activity android:name=".ui.News.NewsContentActivity" />
+
+        <!-- 对话界面注册 -->
+        <activity android:name=".ui.Community.ChatActivity" />
+
+>>>>>>> 202b212f022d6f25cf57ed309f54e4cb70f7d9c2
     </application>
 
 </manifest>

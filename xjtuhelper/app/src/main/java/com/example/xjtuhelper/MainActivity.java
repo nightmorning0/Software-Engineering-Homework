@@ -1,5 +1,7 @@
 package com.example.xjtuhelper;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.xjtuhelper.ui.Community.CommunityFragment;
+import com.example.xjtuhelper.ui.Login.LoginActivity;
 import com.example.xjtuhelper.ui.Map.MapFragment;
 import com.example.xjtuhelper.ui.News.News;
 import com.example.xjtuhelper.ui.News.NewsFragment;
@@ -61,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorTextIcons));
         setSupportActionBar(toolbar);
 
-        // 用户信息初始化， 测试代码，测试完毕记得删除
-        user_info = new User("奥里给", "电信学院", Constant.CODE_GENDER_MALE);
+        // 用户信息初始化
+        user_info = ((Application) getApplicationContext()).user_info;
 
         // 新闻初始化
         if ( ((Application)getApplicationContext()).global_news == null) {
@@ -70,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
             // volley 连接
             // 初始化请求队列
             connectQueue = Volley.newRequestQueue(this);
-            JsonObjectRequest newsRequest;
 
             // 从服务器获取今日的数据条目数
             getJSON(new VolleyCallback() {
@@ -143,14 +145,18 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "用户信息", Toast.LENGTH_SHORT).show();
                 }
                 if (id == R.id.log_out){
-                    Toast.makeText(getApplicationContext(), "登出按钮", Toast.LENGTH_SHORT).show();
+                    // 清空用户信息并跳转登录界面
+                    SharedPreferences user_info = getSharedPreferences("user_info", MODE_PRIVATE);
+                    SharedPreferences.Editor user_info_editor = user_info.edit();
+                    user_info_editor.clear();
+                    user_info_editor.apply();
+                    Intent login_intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(login_intent);
+                    finish();
                 }
                 return true;
             }
         });
-
-
-
 
 
         // 初始化窗口位置

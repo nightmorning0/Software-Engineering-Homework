@@ -8,6 +8,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="社区功能暂未开发" />
+        android:text="社区功能暂未开发完" />
+
+    <Button
+        android:id="@+id/button_to_chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="点此跳转chat" />
 
 </FrameLayout>
