@@ -1,14 +1,14 @@
 package com.example.xjtuhelper.ui.Community;
 
 public class PersonChat {
-    private int id;
+    private String id;
     private String name;
     private String chatMessage;
-    private boolean isMeSend;
-    public int getId() {
+//    private boolean isMeSend;
+    public String getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
     public String getName() {
@@ -23,19 +23,26 @@ public class PersonChat {
     public void setChatMessage(String chatMessage) {
         this.chatMessage = chatMessage;
     }
-    public boolean isMeSend() {
-        return isMeSend;
+    public boolean isMeSend(String id) {
+        return id.equals(this.id);
     }
-    public void setMeSend(boolean isMeSend) {
-        this.isMeSend = isMeSend;
-    }
-    public PersonChat(int id, String name, String chatMessage, boolean isMeSend) {
+//    public void setMeSend(boolean isMeSend) {
+//        this.isMeSend = isMeSend;
+//    }
+    public PersonChat(String id, String name, String chatMessage) {
         super();
         this.id = id;
         this.name = name;
         this.chatMessage = chatMessage;
-        this.isMeSend = isMeSend;
-    }
+}
+
+//    public PersonChat(String id, String name, String chatMessage, boolean isMeSend) {
+//        super();
+//        this.id = id;
+//        this.name = name;
+//        this.chatMessage = chatMessage;
+//        this.isMeSend = isMeSend;
+//    }
     public PersonChat() {
         super();
     }

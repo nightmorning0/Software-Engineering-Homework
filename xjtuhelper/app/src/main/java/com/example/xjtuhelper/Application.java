@@ -11,5 +11,6 @@ public class Application extends android.app.Application {
     public List<News> global_news;
     public List<Comment> global_comments;
     public int getGlobal_current_window = R.id.menu_news;
+    public boolean comment_is_update = false;
     public User user_info;
 }

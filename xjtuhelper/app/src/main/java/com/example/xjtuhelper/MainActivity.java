@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Comments 初始化
-        if ( ((Application)getApplicationContext()).global_comments == null) {
+        if ( ((Application)getApplicationContext()).global_comments == null || ((Application)getApplicationContext()).comment_is_update) {
             comments = new ArrayList<>();
             // volley 连接
             // 初始化请求队列
@@ -116,7 +116,8 @@ public class MainActivity extends AppCompatActivity {
                         String comment_username = data.getString("username");
                         String comment_content = data.getString("comment");
                         String comment_time = data.getString("time");
-                        comments.add(new Comment(comment_content, comment_time, comment_username));
+                        String comment_user_id = data.getString("id");
+                        comments.add(new Comment(comment_content, comment_time, comment_username, comment_user_id));
                     }
                     ((Application)getApplicationContext()).global_comments = comments;
                 }
