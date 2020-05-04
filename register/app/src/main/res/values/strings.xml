@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string-array name="sex0">
+            <item>请选择性别</item>
+            <item>男</item>
+            <item>女</item>
+    </string-array>
+    <string-array name="depart0">
+        <item>请选择学院</item>
+        <item>理学院</item>
+        <item>数学学院</item>
+        <item>机械学院</item>
+        <item>电气学院</item>
+        <item>能动学院</item>
+        <item>电信学部</item>
+        <item>材料学院</item>
+        <item>人居学院</item>
+        <item>生命学院</item>
+        <item>航天学院</item>
+        <item>化工学院</item>
+        <item>管理学院</item>
+        <item>公管学院</item>
+        <item>医学部</item>
+        <item>人文学院</item>
+        <item>马克思主义学院</item>
+        <item>法学院</item>
+        <item>外国语学院</item>
+    </string-array>
+</resources>
