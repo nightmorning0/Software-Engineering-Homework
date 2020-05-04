@@ -73,7 +73,8 @@ public class LoginActivity extends AppCompatActivity {
         mreg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this,"暂未开放",Toast.LENGTH_SHORT).show();
+                Intent logup = new Intent(LoginActivity.this, InfoChangeActivity.class);
+                startActivity(logup);
             }
         });
         // 登录按钮逻辑

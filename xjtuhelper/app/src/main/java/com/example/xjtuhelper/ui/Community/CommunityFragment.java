@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.xjtuhelper.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,7 +23,6 @@ import java.util.List;
  */
 public class CommunityFragment extends Fragment {
     private List<PersonChat> PersonChat;
-    private Button ToChat;
     private List<Comment> comments;
     public CommunityFragment() {
     }
@@ -50,22 +50,15 @@ public class CommunityFragment extends Fragment {
         CommentsAdapter adapter = new CommentsAdapter(inflater, comments);
         comments_list.setAdapter(adapter);
 
-        /*if (getArguments() != null) {
-            PersonChat = (List<PersonChat>) getArguments().getSerializable("news");
-        }
-        else {
-            PersonChat = new ArrayList<>();
-        }
-        final ListView chat_list = root.findViewById(R.id.chat_dia_list);
-        ChatAdapter adapter = new ChatAdapter(getContext(), PersonChat);
-        chat_list.setAdapter(adapter);*/
-        ToChat = root   .findViewById(R.id.button_to_chat);
-        ToChat.setOnClickListener(new View.OnClickListener() {
+
+        FloatingActionButton cmt = root.findViewById(R.id.fab_add_cmt);
+        cmt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent();
                 i.setClass(getContext(), ChatActivity.class);
                 startActivity(i);
+
             }
         });
         return root;
