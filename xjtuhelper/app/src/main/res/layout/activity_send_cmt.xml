@@ -19,54 +19,41 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/abc_vector_test" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout4"
+    <View
+        android:id="@+id/shadow"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/ConstraintLayout3"
+        android:layout_height="5dp"
+        android:background="@drawable/tool_bar_shadow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_chat">
-
-        <ListView
-            android:id="@+id/chat_dia_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:divider="#0000"
-            android:dividerHeight="8dp"
-            android:scrollbars="none" />
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/ConstraintLayout3" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/ConstraintLayout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:background="@color/colorChatType"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_chat">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:paddingStart="16dp"
-            android:paddingEnd="0dp"
+            android:padding="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btn_chat_send_msg"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:paddingLeft="16dp"
-            android:paddingRight="0dp">
+            >
 
             <EditText
                 android:id="@+id/chat_msg"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:background="@null"
-                android:gravity="center|start"
+                android:gravity="start|top"
                 android:hint="@string/chat_default"
                 android:inputType="textMultiLine"
                 android:textColor="@color/colorTextPrimary"
@@ -74,14 +61,18 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_chat_send_msg"
-            style="@style/Theme.AppCompat.DayNight"
-            android:layout_width="93dp"
-            android:layout_height="50dp"
-            android:background="@drawable/send_bg"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_chat_send_msg"
+        style="@style/Theme.AppCompat.DayNight"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/send"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_chat"
+        app:layout_constraintEnd_toEndOf="@id/toolbar_chat"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

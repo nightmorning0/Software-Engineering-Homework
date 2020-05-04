@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">xjtuhelper</string>
     <string name="close_wele">立刻开始</string>
+    <string name="hint_login_id">学号</string>
+    <string name="hint_login_pwd">密码</string>
     <string name="night_mode">夜间模式</string>
     <string name="welcome_skip">SKIP</string>
     <string name="title_news">新闻</string>

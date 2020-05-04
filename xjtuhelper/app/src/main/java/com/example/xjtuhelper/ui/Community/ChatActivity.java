@@ -5,8 +5,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -14,61 +16,75 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.xjtuhelper.Application;
+import com.example.xjtuhelper.Constant;
 import com.example.xjtuhelper.R;
+import com.example.xjtuhelper.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ChatActivity extends AppCompatActivity {
     private Toolbar tb;
     private ChatAdapter chatAdapter;
+    private User user_info;
+    private List<Comment> comments;
+    private RequestQueue connectQueue; // 请求队列
 
     //声明ListView
 
     private ListView lv_chat_dialog;
 
-    //集合
-
+    // 初始化聊天信息
     private List<PersonChat> personChats = new ArrayList<PersonChat>();
-    private Handler handler = new Handler() {
+    /*private Handler handler = new Handler() {
         public void handleMessage(android.os.Message msg) {
             int what = msg.what;
             switch (what) {
                 case 1:
-
                      //ListView条目控制在最后一行
-
                     lv_chat_dialog.setSelection(personChats.size());
                     break;
-
                 default:
                     break;
             }
         };
-    };
+    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_chat);
+        setContentView(R.layout.activity_send_cmt);
         tb = findViewById(R.id.toolbar_chat);
-        tb.setTitle("Chat");
+        tb.setTitle("动态");
         tb.setTitleTextColor(Color.WHITE);
         setSupportActionBar(tb);
-        lv_chat_dialog = (ListView) findViewById(R.id.chat_dia_list);
         Button btn_chat_message_send = (Button) findViewById(R.id.btn_chat_send_msg);
         final EditText et_chat_message = (EditText) findViewById(R.id.chat_msg);
 
-//setAdapter
+        user_info = ((Application) getApplicationContext()).user_info;
+        comments = ((Application) getApplicationContext()).global_comments;
+        connectQueue = Volley.newRequestQueue(this);
 
-        chatAdapter = new ChatAdapter(this, personChats);
-        lv_chat_dialog.setAdapter(chatAdapter);
+
+
+//setAdapter
+        comments = ((Application)getApplicationContext()).global_comments;
+        for (int i=comments.size() - 1; i>=0; i--) {
+            personChats.add(comments.get(i).toPersonChat());
+        }
 
 //发送按钮的点击事件
 
         btn_chat_message_send.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
                 // TODO Auto-generated method stub
@@ -76,18 +92,38 @@ public class ChatActivity extends AppCompatActivity {
                     Toast.makeText(ChatActivity.this, "发送内容不能为空", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                PersonChat personChat = new PersonChat();
-                //代表自己发送
-                personChat.setMeSend(true);
-                //得到发送内容
-                personChat.setChatMessage(et_chat_message.getText().toString());
-                //加入集合
-                personChats.add(personChat);
+                String msg = et_chat_message.getText().toString();
                 //清空输入框
                 et_chat_message.setText("");
                 //刷新ListView
-                chatAdapter.notifyDataSetChanged();
-                handler.sendEmptyMessage(1);
+                ((Application)getApplicationContext()).comment_is_update = true;
+                // 上传评论到服务器
+                String payload = String.format("{\"id\":\"%s\",\"passwd\":\"%s\",\"comment\":\"%s\"}",user_info.getId(), user_info.getPwd(), msg);
+                String url = Constant.REMOTE_COMMENT_COMMIT + payload;
+                StringRequest stringRequest = new StringRequest(url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                Log.d("TAG", "comment commit successfully");
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.e("TAG", "comment commit failed");
+                            }
+                        }
+                );
+                connectQueue.add(stringRequest);
+                //延时关闭
+                Timer timer = new Timer();
+                TimerTask task = new TimerTask() {
+                    @Override
+                    public void run() {
+                        finish();
+                    }
+                };
+                timer.schedule(task, 300 * 1);
 
             }
         });

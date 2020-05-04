@@ -1,5 +1,7 @@
 package com.example.xjtuhelper;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,9 +30,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.xjtuhelper.ui.Community.CommunityFragment;
+import com.example.xjtuhelper.ui.Login.LoginActivity;
 import com.example.xjtuhelper.ui.Map.MapFragment;
 import com.example.xjtuhelper.ui.News.News;
 import com.example.xjtuhelper.ui.News.NewsFragment;
+import com.example.xjtuhelper.ui.Community.Comment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -39,8 +43,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
+
 public class MainActivity extends AppCompatActivity {
     private List<News> news;
+    private List<Comment> comments;
     private DrawerLayout mDrawerLayout;
     private RequestQueue connectQueue; // 请求队列
     private User user_info;
@@ -61,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorTextIcons));
         setSupportActionBar(toolbar);
 
-        // 用户信息初始化， 测试代码，测试完毕记得删除
-        user_info = new User("奥里给", "电信学院", Constant.CODE_GENDER_MALE);
+        // 用户信息初始化
+        user_info = ((Application) getApplicationContext()).user_info;
 
         // 新闻初始化
         if ( ((Application)getApplicationContext()).global_news == null) {
@@ -70,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
             // volley 连接
             // 初始化请求队列
             connectQueue = Volley.newRequestQueue(this);
-            JsonObjectRequest newsRequest;
 
             // 从服务器获取今日的数据条目数
             getJSON(new VolleyCallback() {
@@ -95,6 +100,33 @@ public class MainActivity extends AppCompatActivity {
             news =  ((Application)getApplicationContext()).global_news;
         }
 
+        // Comments 初始化
+        if ( ((Application)getApplicationContext()).global_comments == null || ((Application)getApplicationContext()).comment_is_update) {
+            comments = new ArrayList<>();
+            // volley 连接
+            // 初始化请求队列
+            connectQueue = Volley.newRequestQueue(this);
+            // 从服务器获取评论
+            getJSON(new VolleyCallback() {
+                @Override
+                public void onSuccess(JSONObject response) throws JSONException {
+                    JSONArray data_list = response.getJSONArray("comments");
+                    for (int i=0; i < data_list.length(); i++) {
+                        JSONObject data = data_list.getJSONObject(i);
+                        String comment_username = data.getString("username");
+                        String comment_content = data.getString("comment");
+                        String comment_time = data.getString("time");
+                        String comment_user_id = data.getString("id");
+                        comments.add(new Comment(comment_content, comment_time, comment_username, comment_user_id));
+                    }
+                    ((Application)getApplicationContext()).global_comments = comments;
+                }
+            }, Constant.REMOTE_COMMENTS_GET);
+        }
+        else {
+            news =  ((Application)getApplicationContext()).global_news;
+        }
+
         // 底部导航
         BottomNavigationView bottom_nav_view = findViewById(R.id.nav_view);
         bottom_nav_view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -111,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                         ((Application)getApplicationContext()).getGlobal_current_window = R.id.menu_maps;
                         break;
                     case R.id.menu_community:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new CommunityFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, CommunityFragment.newInstance(comments)).commit();
                         ((Application)getApplicationContext()).getGlobal_current_window = R.id.menu_community;
                         break;
                 }
@@ -143,14 +175,18 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "用户信息", Toast.LENGTH_SHORT).show();
                 }
                 if (id == R.id.log_out){
-                    Toast.makeText(getApplicationContext(), "登出按钮", Toast.LENGTH_SHORT).show();
+                    // 清空用户信息并跳转登录界面
+                    SharedPreferences user_info = getSharedPreferences("user_info", MODE_PRIVATE);
+                    SharedPreferences.Editor user_info_editor = user_info.edit();
+                    user_info_editor.clear();
+                    user_info_editor.apply();
+                    Intent login_intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(login_intent);
+                    finish();
                 }
                 return true;
             }
         });
-
-
-
 
 
         // 初始化窗口位置
@@ -162,11 +198,9 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new MapFragment()).commit();
                 break;
             case R.id.menu_community:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, new CommunityFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, CommunityFragment.newInstance(comments)).commit();
                 break;
         }
-
-
 
     }
 
