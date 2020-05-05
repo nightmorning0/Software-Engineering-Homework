@@ -30,6 +30,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.xjtuhelper.ui.Community.CommunityFragment;
+import com.example.xjtuhelper.ui.Login.InfoChangeActivity;
 import com.example.xjtuhelper.ui.Login.LoginActivity;
 import com.example.xjtuhelper.ui.Map.MapFragment;
 import com.example.xjtuhelper.ui.News.News;
@@ -173,7 +174,8 @@ public class MainActivity extends AppCompatActivity {
                 //在这里处理item的点击事件
                 int id = item.getItemId();
                 if (id == R.id.user_info){
-                    Toast.makeText(getApplicationContext(), "用户信息", Toast.LENGTH_SHORT).show();
+                    Intent logup_intent = new Intent(MainActivity.this, InfoChangeActivity.class);
+                    startActivity((logup_intent));
                 }
                 if (id == R.id.log_out){
                     // 清空用户信息并跳转登录界面
@@ -203,6 +205,12 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        user_info = ((Application) getApplicationContext()).user_info;
     }
 
     //绑定menu:menu_content

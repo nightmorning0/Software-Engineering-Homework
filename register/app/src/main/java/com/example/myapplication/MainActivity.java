@@ -1,6 +1,7 @@
 package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     EditText pass;  //密码
     Spinner department;  //学院
     Button mbutton;
+    String test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
-                String str=parent.getItemAtPosition(position).toString();
+                test =parent.getItemAtPosition(position).toString();
+                Log.e("TAG", test);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
