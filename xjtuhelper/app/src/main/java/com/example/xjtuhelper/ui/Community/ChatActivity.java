@@ -33,30 +33,9 @@ import java.util.TimerTask;
 
 public class ChatActivity extends AppCompatActivity {
     private Toolbar tb;
-    private ChatAdapter chatAdapter;
     private User user_info;
-    private List<Comment> comments;
+    private String msg;
     private RequestQueue connectQueue; // 请求队列
-
-    //声明ListView
-
-    private ListView lv_chat_dialog;
-
-    // 初始化聊天信息
-    private List<PersonChat> personChats = new ArrayList<PersonChat>();
-    /*private Handler handler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-            int what = msg.what;
-            switch (what) {
-                case 1:
-                     //ListView条目控制在最后一行
-                    lv_chat_dialog.setSelection(personChats.size());
-                    break;
-                default:
-                    break;
-            }
-        };
-    };*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,16 +50,8 @@ public class ChatActivity extends AppCompatActivity {
         final EditText et_chat_message = (EditText) findViewById(R.id.chat_msg);
 
         user_info = ((Application) getApplicationContext()).user_info;
-        comments = ((Application) getApplicationContext()).global_comments;
         connectQueue = Volley.newRequestQueue(this);
 
-
-
-//setAdapter
-        comments = ((Application)getApplicationContext()).global_comments;
-        for (int i=comments.size() - 1; i>=0; i--) {
-            personChats.add(comments.get(i).toPersonChat());
-        }
 
 //发送按钮的点击事件
 
@@ -92,7 +63,7 @@ public class ChatActivity extends AppCompatActivity {
                     Toast.makeText(ChatActivity.this, "发送内容不能为空", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String msg = et_chat_message.getText().toString();
+                msg = et_chat_message.getText().toString();
                 //清空输入框
                 et_chat_message.setText("");
                 //刷新ListView
@@ -104,7 +75,12 @@ public class ChatActivity extends AppCompatActivity {
                         new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
-                                Log.d("TAG", "comment commit successfully");
+                                if (Integer.valueOf(response) == Constant.STATUS_GENERAL_SUCCESS) {
+                                    ((Application) getApplicationContext()).comment_is_update = true;
+                                    Comment new_comment = new Comment(msg, "刚刚", user_info.getName(), user_info.getId());
+                                    ((Application) getApplicationContext()).global_comments.add(0, new_comment);
+                                    Log.d("TAG", "comment commit successfully");
+                                }
                             }
                         },
                         new Response.ErrorListener() {

@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
                     ((Application)getApplicationContext()).global_comments = comments;
                 }
             }, Constant.REMOTE_COMMENTS_GET);
+            ((Application)getApplicationContext()).comment_is_update = false;
         }
         else {
             news =  ((Application)getApplicationContext()).global_news;
