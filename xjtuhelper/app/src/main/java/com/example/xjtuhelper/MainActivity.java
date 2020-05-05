@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private List<News> news;
     private List<Comment> comments;
     private DrawerLayout mDrawerLayout;
-    private RequestQueue connectQueue; // 请求队列
+    private SwipeRefreshLayout refresh;
     private User user_info;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,6 +160,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         user_info = ((Application) getApplicationContext()).user_info;
+        news =  ((Application)getApplicationContext()).global_news;
+        comments =  ((Application)getApplicationContext()).global_comments;
     }
 
     //绑定menu:menu_content
