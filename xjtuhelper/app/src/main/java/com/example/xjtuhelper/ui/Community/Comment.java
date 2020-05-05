@@ -19,5 +19,4 @@ public class Comment implements Serializable {
     String getTime() { return time; }
     String getUsername() { return username; }
     String getId() { return id; }
-    PersonChat toPersonChat() { return new PersonChat(id, username, content); }
 }
