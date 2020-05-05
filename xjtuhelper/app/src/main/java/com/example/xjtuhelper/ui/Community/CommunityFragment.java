@@ -22,7 +22,6 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class CommunityFragment extends Fragment {
-    private List<PersonChat> PersonChat;
     private List<Comment> comments;
     public CommunityFragment() {
     }

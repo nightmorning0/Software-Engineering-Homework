@@ -154,10 +154,10 @@ public class LoginActivity extends AppCompatActivity {
         int screen_y = metric.heightPixels;
         //四个控件的移动逻辑
         Animation animreg = new TranslateAnimation(-202,0,screen_y*(1/2),screen_y*(1/2));
-        Animation animlogin = new TranslateAnimation(142,0,screen_y*(1/2),screen_y*(1/2));
+        Animation animlogin = new TranslateAnimation(0,0,60,0);
         Animation animname = new TranslateAnimation(-280,0,screen_y*(1/2)-60,screen_y*(1/2)-60);
         Animation animpass = new TranslateAnimation(-280,0,screen_y*(1/2)+60,screen_y*(1/2)+60);
-        Animation animfgt = new TranslateAnimation(0,0,82,0);
+        Animation animfgt = new TranslateAnimation(-202,0,screen_y*(1/2),screen_y*(1/2));
         //四个控件的移动时间
         animreg.setDuration(500);
         animlogin.setDuration(500);
