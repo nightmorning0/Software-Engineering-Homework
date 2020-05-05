@@ -35,7 +35,6 @@ public class ChatActivity extends AppCompatActivity {
     private Toolbar tb;
     private User user_info;
     private String msg;
-    private RequestQueue connectQueue; // 请求队列
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,6 @@ public class ChatActivity extends AppCompatActivity {
         final EditText et_chat_message = (EditText) findViewById(R.id.chat_msg);
 
         user_info = ((Application) getApplicationContext()).user_info;
-        connectQueue = Volley.newRequestQueue(this);
 
 
 //发送按钮的点击事件
@@ -90,7 +88,7 @@ public class ChatActivity extends AppCompatActivity {
                             }
                         }
                 );
-                connectQueue.add(stringRequest);
+                Application.connect_queue.add(stringRequest);
                 //延时关闭
                 Timer timer = new Timer();
                 TimerTask task = new TimerTask() {

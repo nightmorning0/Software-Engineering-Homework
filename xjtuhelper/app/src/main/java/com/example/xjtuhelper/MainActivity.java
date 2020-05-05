@@ -72,62 +72,10 @@ public class MainActivity extends AppCompatActivity {
         user_info = ((Application) getApplicationContext()).user_info;
 
         // 新闻初始化
-        if ( ((Application)getApplicationContext()).global_news == null) {
-            news = new ArrayList<>();
-            // volley 连接
-            // 初始化请求队列
-            connectQueue = Volley.newRequestQueue(this);
-
-            // 从服务器获取今日的数据条目数
-            getJSON(new VolleyCallback() {
-                @Override
-                public void onSuccess(JSONObject response) throws JSONException {
-                    // 获取新闻信息
-                    JSONArray data_list = response.getJSONArray("data");
-                    for (int i=0; i < data_list.length(); i++) {
-                        JSONObject data = data_list.getJSONObject(i);
-                        String title = data.getString("title");
-                        String content = data.getString("content");
-                        String date = data.getString("date");
-                        String url = data.getString("url");
-                        news.add(new News(title, date, url, content));
-                    }
-                    ((Application)getApplicationContext()).global_news = news;
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container_fragment, NewsFragment.newInstance(news)).commit();
-                }
-            }, Constant.REMOTE_NEWS_GET);
-        }
-        else {
-            news =  ((Application)getApplicationContext()).global_news;
-        }
+        news =  ((Application)getApplicationContext()).global_news;
 
         // Comments 初始化
-        if ( ((Application)getApplicationContext()).global_comments == null || ((Application)getApplicationContext()).comment_is_update) {
-            comments = new ArrayList<>();
-            // volley 连接
-            // 初始化请求队列
-            connectQueue = Volley.newRequestQueue(this);
-            // 从服务器获取评论
-            getJSON(new VolleyCallback() {
-                @Override
-                public void onSuccess(JSONObject response) throws JSONException {
-                    JSONArray data_list = response.getJSONArray("comments");
-                    for (int i=0; i < data_list.length(); i++) {
-                        JSONObject data = data_list.getJSONObject(i);
-                        String comment_username = data.getString("username");
-                        String comment_content = data.getString("comment");
-                        String comment_time = data.getString("time");
-                        String comment_user_id = data.getString("id");
-                        comments.add(new Comment(comment_content, comment_time, comment_username, comment_user_id));
-                    }
-                    ((Application)getApplicationContext()).global_comments = comments;
-                }
-            }, Constant.REMOTE_COMMENTS_GET);
-            ((Application)getApplicationContext()).comment_is_update = false;
-        }
-        else {
-            news =  ((Application)getApplicationContext()).global_news;
-        }
+        comments =  ((Application)getApplicationContext()).global_comments;
 
         // 底部导航
         BottomNavigationView bottom_nav_view = findViewById(R.id.nav_view);
@@ -240,33 +188,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void getJSON(final VolleyCallback callback, String url) {
-        // 用于解决 Volley 异步响应无法返回 response 的问题
-        JsonObjectRequest jreq = new JsonObjectRequest(
-                url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            callback.onSuccess(response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("TAG", error.getMessage(), error);
-                    }
-                }
-        );
-        connectQueue.add(jreq);
-    }
-    public interface VolleyCallback {
-        // 定义成功响应回调接口
-        void onSuccess(JSONObject response) throws JSONException;
-    }
 
     /**
      * hide action bar

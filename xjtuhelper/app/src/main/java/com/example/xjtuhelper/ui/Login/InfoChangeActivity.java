@@ -59,8 +59,6 @@ public class InfoChangeActivity extends AppCompatActivity {
     String id;
     String college;
     int gender;
-
-    RequestQueue connectQueue;
     Intent home;
 
     @Override
@@ -68,8 +66,6 @@ public class InfoChangeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_change);
 
-        // 初始化请求队列
-        connectQueue = Volley.newRequestQueue(InfoChangeActivity.this);
 
         home = new Intent(this, MainActivity.class);
 
@@ -237,8 +233,7 @@ public class InfoChangeActivity extends AppCompatActivity {
                         Log.e("TAG", "onErrorResponse");
                     }
                 });
-                connectQueue.add(request);
-
+                Application.connect_queue.add(request);
             }
             });
     }
