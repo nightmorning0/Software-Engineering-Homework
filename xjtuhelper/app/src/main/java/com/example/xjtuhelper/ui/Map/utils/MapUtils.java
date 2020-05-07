@@ -15,10 +15,6 @@ import com.amap.api.services.route.RouteRailwayItem;
 import java.text.DecimalFormat;
 import java.util.List;
 
-/**
- * Created by miku on 2017/5/30 0030.
- */
-
 public class MapUtils {
 
     public static LatLng convertToLatLng(Location location){

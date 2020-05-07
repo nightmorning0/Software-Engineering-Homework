@@ -1,8 +1,6 @@
 package com.example.xjtuhelper.ui.Map.utils;
 
-/**
- * Created by miku on 2017/6/1 0001.
- */
+
 
 public abstract class Constants {
 
