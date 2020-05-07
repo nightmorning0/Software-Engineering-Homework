@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.Map.MapFragment">
 
-    <com.amap.api.maps.MapView
 
-        android:id="@+id/map"
-
+    <Button
+        android:id="@+id/button"
         android:layout_width="match_parent"
-
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:text="@string/MapButton"
+        android:layout_gravity="center" />
 
 
 </FrameLayout>
