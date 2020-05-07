@@ -15,12 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.Login.InfoChangeActivity"></activity>
 
         <uses-library
             android:name="org.apache.http.legacy"
-            android:required="false" />
-
-        <!-- 欢迎界面注册 -->
+            android:required="false" /> <!-- 欢迎界面注册 -->
         <activity
             android:name=".WelcomeActivity"
             android:noHistory="true">
@@ -29,23 +28,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- 登录界面注册 -->
+        </activity> <!-- 登录界面注册 -->
         <activity
             android:name=".ui.Login.LoginActivity"
-            android:noHistory="true">
-        </activity>
-
-        <!-- 主界面注册 -->
-        <activity android:name=".MainActivity" />
-
-        <!-- 新闻内容界面注册 -->
-        <activity android:name=".ui.News.NewsContentActivity" />
-
-        <!-- 对话界面注册 -->
+            android:noHistory="true"></activity> <!-- 主界面注册 -->
+        <activity android:name=".MainActivity" /> <!-- 新闻内容界面注册 -->
+        <activity android:name=".ui.News.NewsContentActivity" /> <!-- 对话界面注册 -->
         <activity android:name=".ui.Community.ChatActivity" />
-
     </application>
 
 </manifest>

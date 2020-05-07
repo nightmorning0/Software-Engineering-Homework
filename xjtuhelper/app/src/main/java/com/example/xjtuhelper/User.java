@@ -31,4 +31,5 @@ public class User {
     }
     public int getGender() { return gender; }
     public String getId() {return id;}
+    public String getPwd() { return pwd; }
 }

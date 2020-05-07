@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText text_user;  // 学号
     EditText text_pwd;  //密码
     Button mlogin,mreg,mfgt;
-    private RequestQueue connectQueue; // 请求队列
+//    private RequestQueue connectQueue; // 请求队列
     String user;
     String pwd;
     @Override
@@ -73,7 +73,8 @@ public class LoginActivity extends AppCompatActivity {
         mreg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(LoginActivity.this,"暂未开放",Toast.LENGTH_SHORT).show();
+                Intent logup = new Intent(LoginActivity.this, InfoChangeActivity.class);
+                startActivity(logup);
             }
         });
         // 登录按钮逻辑
@@ -99,12 +100,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 String payload = String.format("{\"id\":\"%s\",\"passwd\":\"%s\"}", user, pwd);
-                // volley 连接
-                // 初始化请求队列
-                connectQueue = Volley.newRequestQueue(LoginActivity.this);
 
                 // 从服务器验证登录
-                getJSON(new MainActivity.VolleyCallback() {
+                Application.getJSON(new Application.VolleyCallback() {
                     @SuppressLint({"DefaultLocale", "CommitPrefEdits"})
                     @Override
                     public void onSuccess(JSONObject response) throws JSONException {
@@ -143,8 +141,6 @@ public class LoginActivity extends AppCompatActivity {
                                 db_msg = "奇怪的返回值，检查服务器代码";
                         }
                         Toast.makeText(LoginActivity.this, db_msg, Toast.LENGTH_SHORT).show();
-
-                        //((Application)getApplicationContext()).global_news = news;
                     }
                 }, Constant.REMOTE_LOGIN + payload);
             }
@@ -158,10 +154,10 @@ public class LoginActivity extends AppCompatActivity {
         int screen_y = metric.heightPixels;
         //四个控件的移动逻辑
         Animation animreg = new TranslateAnimation(-202,0,screen_y*(1/2),screen_y*(1/2));
-        Animation animlogin = new TranslateAnimation(142,0,screen_y*(1/2),screen_y*(1/2));
+        Animation animlogin = new TranslateAnimation(0,0,60,0);
         Animation animname = new TranslateAnimation(-280,0,screen_y*(1/2)-60,screen_y*(1/2)-60);
         Animation animpass = new TranslateAnimation(-280,0,screen_y*(1/2)+60,screen_y*(1/2)+60);
-        Animation animfgt = new TranslateAnimation(0,0,82,0);
+        Animation animfgt = new TranslateAnimation(-202,0,screen_y*(1/2),screen_y*(1/2));
         //四个控件的移动时间
         animreg.setDuration(500);
         animlogin.setDuration(500);
@@ -192,32 +188,5 @@ public class LoginActivity extends AppCompatActivity {
         animname.startNow();
         animpass.startNow();
         animfgt.startNow();
-    }
-    public void getJSON(final MainActivity.VolleyCallback callback, String url) {
-        // 用于解决 Volley 异步响应无法返回 response 的问题
-        JsonObjectRequest jreq = new JsonObjectRequest(
-                url, null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            callback.onSuccess(response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("TAG", error.getMessage(), error);
-                    }
-                }
-        );
-        connectQueue.add(jreq);
-    }
-    public interface VolleyCallback {
-        // 定义成功响应回调接口
-        void onSuccess(JSONObject response) throws JSONException;
     }
 }
