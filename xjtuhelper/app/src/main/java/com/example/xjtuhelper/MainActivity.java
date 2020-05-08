@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
     private List<News> news;
     private List<Comment> comments;
     private DrawerLayout mDrawerLayout;
-    private SwipeRefreshLayout refresh;
     private User user_info;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
