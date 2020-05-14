@@ -10,8 +10,10 @@
     <string name="title_community">圈子</string>
     <string name="chat_send">发送</string>
     <string name="chat_default">说些什么吧！</string>
+    <string name="later">敬请期待</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="MapButton">打开地图</string>
     <string-array name="sex0">
                 <item>男</item>
                 <item>女</item>

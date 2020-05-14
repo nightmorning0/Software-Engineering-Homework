@@ -43,7 +43,7 @@ import java.security.NoSuchAlgorithmException;
 public class LoginActivity extends AppCompatActivity {
     EditText text_user;  // 学号
     EditText text_pwd;  //密码
-    Button mlogin,mreg;
+    Button mlogin,mreg,mfgt;
 //    private RequestQueue connectQueue; // 请求队列
     String user;
     String pwd;
@@ -55,12 +55,20 @@ public class LoginActivity extends AppCompatActivity {
 
         mlogin = findViewById(R.id.btn_login);
         mreg = findViewById(R.id.btn_reg);
+        mfgt = findViewById(R.id.btn_fgt_pswd) ;
         //写代码
         text_user=(EditText) findViewById(R.id.user);  //获取学号
         text_pwd=(EditText) findViewById(R.id.pass);  //获取密码
         //动画效果
         ANIM();
 
+        //修改密码按钮逻辑
+        mfgt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(LoginActivity.this,"暂未开放",Toast.LENGTH_SHORT).show();
+            }
+        });
         //注册按钮逻辑
         mreg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,30 +157,36 @@ public class LoginActivity extends AppCompatActivity {
         Animation animlogin = new TranslateAnimation(0,0,60,0);
         Animation animname = new TranslateAnimation(-280,0,screen_y*(1/2)-60,screen_y*(1/2)-60);
         Animation animpass = new TranslateAnimation(-280,0,screen_y*(1/2)+60,screen_y*(1/2)+60);
+        Animation animfgt = new TranslateAnimation(-202,0,screen_y*(1/2),screen_y*(1/2));
         //四个控件的移动时间
         animreg.setDuration(500);
         animlogin.setDuration(500);
         animname.setDuration(500);
         animpass.setDuration(500);
+        animfgt.setDuration(500);
         //四个控件匹配对应的移动逻辑
         mreg.setAnimation(animreg);
         mlogin.setAnimation(animlogin);
         text_user.setAnimation(animname);
         text_pwd.setAnimation(animpass);
+        mfgt.setAnimation(animfgt);
         //防止返回原位
         animreg.setFillEnabled(true);
         animlogin.setFillEnabled(true);
         animname.setFillEnabled(true);
         animpass.setFillEnabled(true);
+        animfgt.setFillEnabled(true);
         //防止返回原位
         animreg.setFillAfter(true);
         animlogin.setFillAfter(true);
         animname.setFillAfter(true);
         animpass.setFillAfter(true);
+        animfgt.setFillAfter(true);
         //执行动画
         animreg.startNow();
         animlogin.startNow();
         animname.startNow();
         animpass.startNow();
+        animfgt.startNow();
     }
 }

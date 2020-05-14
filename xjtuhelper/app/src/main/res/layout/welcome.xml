@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
 
-    android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/btn_close"
@@ -25,10 +24,10 @@
         android:contentDescription="@string/close_wele"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgv_r_c" />
+        app:layout_constraintTop_toTopOf="@+id/reg_chg" />
 
     <ImageView
-        android:id="@+id/imgv_r_c"
+        android:id="@+id/reg_chg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerInside"

@@ -46,9 +46,7 @@ public class InfoChangeActivity extends AppCompatActivity {
     Spinner spin_gender;  //性别
     Spinner spin_college;  //学院
     Button button_login;
-    Button button_back;
-
-    ImageView reg_or_change;
+    ImageView BG;
     String old_pwd;
 
     String new_name;
@@ -84,30 +82,12 @@ public class InfoChangeActivity extends AppCompatActivity {
         text_old_pwd = (EditText) findViewById(R.id.old_pass);
         text_id = (EditText) findViewById(R.id.stunum);
         button_login = findViewById(R.id.button);
-        button_back = findViewById(R.id.buttonback);
-        reg_or_change = findViewById(R.id.imgv_r_c);
+        BG=findViewById(R.id.reg_chg);
         ArrayAdapter<String> adp_gender = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,str_list_gender);//创建Arrayadapter适配器
         ArrayAdapter<String> adp_college = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,str_list_college);
         spin_gender.setAdapter(adp_gender);
         spin_college.setAdapter(adp_college);
 
-        button_back.setOnClickListener(new View.OnClickListener() {
-            SharedPreferences user_info = getSharedPreferences("user_info", MODE_PRIVATE);
-            final boolean login = user_info.getBoolean("login", false);
-            @Override
-            public void onClick(View v) {
-                if (login){
-                    Intent i = new Intent();
-                    i.setClass(InfoChangeActivity.this,MainActivity.class);
-                    startActivity(i);
-                }
-                else{
-                    Intent i = new Intent();
-                    i.setClass(InfoChangeActivity.this,LoginActivity.class);
-                    startActivity(i);
-                }
-            }
-        });
         // 判定登录状态，决定页面显示
         SharedPreferences user_info = getSharedPreferences("user_info", MODE_PRIVATE);
         final boolean login = user_info.getBoolean("login", false);
@@ -117,12 +97,12 @@ public class InfoChangeActivity extends AppCompatActivity {
             button_login.setText("修改并登录");
             text_old_pwd.setVisibility(View.VISIBLE);
             text_pwd.setHint("新密码");
+            BG.setImageResource(R.drawable.change_info);
             name = user_info.getString("username", "奥里给");
             id = user_info.getString("id", "6666666666");
             college = user_info.getString("college", "沙雕学院");
             gender = user_info.getInt("gender", Constant.CODE_GENDER_MALE);
             pwd = user_info.getString("pwd", "aoligibupeiyongyoumima");
-            reg_or_change.setImageDrawable(getResources().getDrawable((R.drawable.change_info)));
             // 置入原始值
             text_id.setText(id);
             text_name.setText(name);

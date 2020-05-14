@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/imgv_r_c"
+        android:id="@+id/reg_chg"
         android:layout_width="689dp"
         android:layout_height="218dp"
         android:layout_marginStart="20dp"
@@ -39,7 +39,6 @@
             android:gravity="center"
             android:hint="用户名"
             android:inputType="textPersonName"
-            android:textColor="@color/colorTextPrimary"
             android:textColorHint="@color/colorTextPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +52,7 @@
             android:gravity="center"
             android:hint="旧密码"
             android:inputType="textPassword"
-            android:textColorHint="#000000"
+            android:textColorHint="@color/colorTextPrimary"
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -67,7 +66,6 @@
             android:gravity="center"
             android:hint="密码"
             android:inputType="textPassword"
-            android:textColor="@color/colorTextPrimary"
             android:textColorHint="@color/colorTextPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -81,7 +79,6 @@
             android:gravity="center"
             android:hint="学号"
             android:inputType="textPersonName"
-            android:textColor="@color/colorTextPrimary"
             android:textColorHint="@color/colorTextPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -92,8 +89,7 @@
             android:layout_height="52dp"
             android:layout_margin="10dp"
             android:entries="@array/sex0"
-            android:hint="性别"
-            android:textColorHint="@color/colorTextPrimary" />
+            android:hint="性别" />
 
         <Spinner
             android:id="@+id/depart1"
@@ -101,8 +97,7 @@
             android:layout_height="52dp"
             android:layout_margin="10dp"
             android:entries="@array/depart0"
-            android:hint="学院"
-            android:textColorHint="@color/colorTextPrimary" />
+            android:hint="学院" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -123,17 +118,6 @@
             android:textSize="24sp" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/buttonback"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/arrow_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

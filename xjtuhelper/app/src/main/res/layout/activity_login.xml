@@ -18,11 +18,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="700dp"
         android:background="@drawable/shadow_login"
-        android:gravity="center"
+        android:gravity="bottom|center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,8 +36,8 @@
             android:gravity="center"
             android:hint="@string/hint_login_id"
             android:inputType="textPersonName"
-            android:textColor="@color/colorTextPrimary"
-            android:textColorHint="@color/colorTextPrimary" />
+            android:textColor="#000000"
+            android:textColorHint="#000000" />
 
         <EditText
             android:id="@+id/pass"
@@ -49,31 +48,46 @@
             android:gravity="center"
             android:hint="@string/hint_login_pwd"
             android:inputType="textPassword"
-            android:textColor="@color/colorTextPrimary"
-            android:textColorHint="@color/colorTextPrimary" />
+            android:textColor="#000000"
+            android:textColorHint="#000000" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_reg"
+                android:layout_width="140dp"
+                android:layout_height="52dp"
+                android:layout_marginRight="10dp"
+                android:background="#607d8b"
+                android:text="注册"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btn_fgt_pswd"
+                android:layout_width="140dp"
+                android:layout_height="52dp"
+                android:layout_marginLeft="10dp"
+                android:background="#607d8b"
+                android:text="忘记密码"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
 
         <Button
-            android:id="@+id/btn_reg"
-            android:layout_width="300dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="50dp"
-            android:background="#607d8b"
-            android:text="注册"
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="214dp"
+            android:background="@drawable/button"
+            android:onClick="Check"
+            android:text="登录"
             android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textSize="24sp" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@drawable/button"
-        android:onClick="Check"
-        android:text="登录"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/linearLayout3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

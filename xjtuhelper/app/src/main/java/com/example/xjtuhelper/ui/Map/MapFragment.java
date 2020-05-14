@@ -1,13 +1,20 @@
 package com.example.xjtuhelper.ui.Map;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.xjtuhelper.User;
+
+import com.example.xjtuhelper.MainActivity;
 import com.example.xjtuhelper.R;
 
 
@@ -16,15 +23,34 @@ import com.example.xjtuhelper.R;
  */
 public class MapFragment extends Fragment {
 
-    public MapFragment() {
-        // Required empty public constructor
-    }
+    private View view,view2;
+    private Button btn;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        // TODO Auto-generated method stub
+
+        view = inflater.inflate(R.layout.fragment_map, null);
+        btn = (Button) view.findViewById(R.id.button);
+        return view;
     }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+
+        super.onActivityCreated(savedInstanceState);
+        btn.setOnClickListener(new View.OnClickListener() {
+
+            //必须在onactivitycreated中写onclick的方法
+            @Override
+            public void onClick(View v) {
+                FragmentActivity mcontent = getActivity();
+                Intent intent = new Intent(mcontent,MapActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
 }
