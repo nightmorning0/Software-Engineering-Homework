@@ -5,7 +5,6 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatDelegate;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -31,19 +30,13 @@ public class Application extends android.app.Application {
     public boolean comment_is_update = false;
     public User user_info;
     public static RequestQueue connect_queue;
-    public static RequestQueue tmp_queue;
     public boolean user_is_login;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        // 初始化数组
-        global_news = new ArrayList<>();
-        global_comments = new ArrayList<>();
-
         // 初始化连接队列
         connect_queue = Volley.newRequestQueue(this);
-        tmp_queue = Volley.newRequestQueue(this);
         // 初始化全局时间，用于自动判断是否夜间模式
         int time = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
         if(time>=6&&time<21){
@@ -99,6 +92,7 @@ public class Application extends android.app.Application {
     }
 
     public void newsUpdate(){
+        global_news = new ArrayList<>();
         getJSON(new VolleyCallback() {
             @Override
             public void onSuccess(JSONObject response) throws JSONException {
@@ -118,6 +112,7 @@ public class Application extends android.app.Application {
 
     public void commentsUpdate(){
         // 从服务器获取评论
+        global_comments = new ArrayList<>();
         getJSON(new VolleyCallback() {
             @Override
             public void onSuccess(JSONObject response) throws JSONException {
@@ -133,5 +128,4 @@ public class Application extends android.app.Application {
             }
         }, Constant.REMOTE_COMMENTS_GET);
     }
-
 }

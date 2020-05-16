@@ -3,12 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.Map.MapFragment">
 
-    <TextView
-        android:layout_width="match_parent"
+    <GridLayout
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:text="地图功能尚未开发" />
+        android:layout_marginBottom="112dp"
+        android:columnCount="2"
+        android:rowCount="1">
 
+        <Button
+            android:id="@+id/button"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:text="@string/MapButton" />
 
+        <Button
+            android:id="@+id/button2"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:text="@string/later" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:text="@string/later" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:text="@string/later" />
+    </GridLayout>
 </FrameLayout>

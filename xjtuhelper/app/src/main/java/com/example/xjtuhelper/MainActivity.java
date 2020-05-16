@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private List<News> news;
     private List<Comment> comments;
     private DrawerLayout mDrawerLayout;
+    private SwipeRefreshLayout refresh;
     private User user_info;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
         // 新闻初始化
         news =  ((Application)getApplicationContext()).global_news;
 
-
         // Comments 初始化
         comments =  ((Application)getApplicationContext()).global_comments;
+
 
         // 底部导航
         BottomNavigationView bottom_nav_view = findViewById(R.id.nav_view);

@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -45,7 +46,7 @@ public class InfoChangeActivity extends AppCompatActivity {
     Spinner spin_gender;  //性别
     Spinner spin_college;  //学院
     Button button_login;
-
+    ImageView BG;
     String old_pwd;
 
     String new_name;
@@ -81,6 +82,7 @@ public class InfoChangeActivity extends AppCompatActivity {
         text_old_pwd = (EditText) findViewById(R.id.old_pass);
         text_id = (EditText) findViewById(R.id.stunum);
         button_login = findViewById(R.id.button);
+        BG=findViewById(R.id.reg_chg);
         ArrayAdapter<String> adp_gender = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,str_list_gender);//创建Arrayadapter适配器
         ArrayAdapter<String> adp_college = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,str_list_college);
         spin_gender.setAdapter(adp_gender);
@@ -95,6 +97,7 @@ public class InfoChangeActivity extends AppCompatActivity {
             button_login.setText("修改并登录");
             text_old_pwd.setVisibility(View.VISIBLE);
             text_pwd.setHint("新密码");
+            BG.setImageResource(R.drawable.change_info);
             name = user_info.getString("username", "奥里给");
             id = user_info.getString("id", "6666666666");
             college = user_info.getString("college", "沙雕学院");
