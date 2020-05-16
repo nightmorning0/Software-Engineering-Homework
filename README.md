@@ -1,4 +1,9 @@
-该软件是基于安卓开发，主要有三大功能
+# README
+
+本项目为本科软件工程课程作业，简单实现了一个 C/S 架构的校园新闻获取、资讯共享 App
+
+<img src="README.assets/pic_welcome.png" alt="pic_welcome" style="zoom: 25%;" />
+
 # 教务处新闻爬虫：
 主要由两个部分组成，二者通过json文件作为借口。
 ## 爬虫功能（spider.py）：
@@ -42,5 +47,6 @@
 ## 数据库：
 ![tup](http://m.qpic.cn/psc?/V128UVJF3dr180/wK0kFdeCHxQUuvx1sBu8JC3zvZF2WBBsWSI0OuWWRhPcstxqvUpM09uhvbexXQzO5VSoWgZXdJKbNgd*iHWHcg!!/mnull&bo=KwTyAAAAAAADB*8!&rf=photolist&t=5.png)
 ![tu](http://m.qpic.cn/psc?/V128UVJF3dr180/wK0kFdeCHxQUuvx1sBu8JHLBwUNTLUcyt4h8oyeCV1xULkessV3kwjSsu6f7MRrwvyZN6s6HGDzKBRqQDnJ6BQ!!/mnull&bo=MwMYAQAAAAADBws!&rf=photolist&t=5.png)
+
 ## 服务器
 我们是租借阿里云的服务器，然后利用docker技术，开取了一个容器，用来作为此软件的服务器。
