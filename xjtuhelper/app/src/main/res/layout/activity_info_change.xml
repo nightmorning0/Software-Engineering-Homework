@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_reg"
+    android:background="@drawable/bg_reg_lgn"
     tools:context=".MainActivity">
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/reg_chg"
         android:layout_width="689dp"
         android:layout_height="218dp"
         android:layout_marginStart="20dp"
@@ -39,13 +39,12 @@
             android:gravity="center"
             android:hint="用户名"
             android:inputType="textPersonName"
-            android:textColorHint="#000000"
+            android:textColorHint="@color/colorTextPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/old_pass"
-            android:visibility="gone"
             android:layout_width="300dp"
             android:layout_height="52dp"
             android:layout_margin="10dp"
@@ -53,7 +52,8 @@
             android:gravity="center"
             android:hint="旧密码"
             android:inputType="textPassword"
-            android:textColorHint="#000000"
+            android:textColorHint="@color/colorTextPrimary"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,7 +66,7 @@
             android:gravity="center"
             android:hint="密码"
             android:inputType="textPassword"
-            android:textColorHint="#000000"
+            android:textColorHint="@color/colorTextPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,7 +79,7 @@
             android:gravity="center"
             android:hint="学号"
             android:inputType="textPersonName"
-            android:textColorHint="#000000"
+            android:textColorHint="@color/colorTextPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -111,24 +111,13 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="70dp"
-            android:background="@drawable/button_reg"
+            android:background="@drawable/button"
             android:onClick="Check"
             android:text="注册并登录"
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/buttonback"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/arrow_up"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
