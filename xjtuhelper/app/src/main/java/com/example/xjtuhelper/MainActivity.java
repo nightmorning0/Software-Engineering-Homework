@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         // 新闻初始化
         news =  ((Application)getApplicationContext()).global_news;
 
+
         // Comments 初始化
         comments =  ((Application)getApplicationContext()).global_comments;
 
