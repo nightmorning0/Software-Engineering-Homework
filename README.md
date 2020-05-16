@@ -2,51 +2,83 @@
 
 本项目为本科软件工程课程作业，简单实现了一个 C/S 架构的校园新闻获取、资讯共享 App
 
-<img src="README.assets/pic_welcome.png" alt="pic_welcome" style="zoom: 25%;" />
+![pic_example](README.assets/pic_example.png)
 
-# 教务处新闻爬虫：
-主要由两个部分组成，二者通过json文件作为借口。
-## 爬虫功能（spider.py）：
-利用request获取并解析教务处网页，进而获取新闻内容和信息
-## 服务端（server.py）：
-基于 flask 框架实现 HTTP 响应，通过 pymysql 实现与 mysql 数据库通信 
+## 项目结构
+
+介绍项目主目录结构：
+
+* Doc：撰写一些软件工程课程所需要的文档，如用户需求说明等
+* Android：项目安卓端程序目录
+* Server：项目服务器端程序目录
+
+## Server
+
+运行环境：Ubuntu 18.04 LTS
+
+所需语言环境：python 3.6.9
+
+所需第三方库：Flask
+
+**运行说明**
+
+时间仓促没有写 install 脚本，若想项目生效需要手动配置，后期项目完善后会加入自动安装脚本
+
+1. 为爬虫设置定时任务：文件`./Server/spider.py`为基于 python request 制作的网络爬虫，用于爬取学校各教务的通知信息，需要配合 crontab 定时任务设置定时爬取
+
+2. 设置服务端数据库：服务端使用 mysql 进行数据存储，需要手动建立 2 张数据表，表名不可更改
+
+   * 用户信息表，表名 user_info
+
+     ![pic_datatable1](README.assets/pic_datatable1.png)
+
+   * 用户评论表，表名 user_comments
+
+     ![image-20200516210904851](README.assets/pic_datatable2.png)
+
+3. 运行服务端程序：基于 Flask 框架实现的服务端，主要响应客户端的 HTTP 请求，直接使用 python3 进行后台运行即可
+
+   ```bash
+   nohup python3 server.py &
+   ```
+
+## Android 
+
+Android app 为本项目面向用户的唯一接口，支持用户注册和登录，目前简单实现了三个主要功能：获取教务处当天新闻通告、校园趣味地图、用户留言社区。
+
+适用安卓版本：8.0+
+
+调用第三方 API：
+
+* Volley：HTTP 通信
+* 高德 SDK：趣味地图导航
+
+**用户注册与登录**
+
+新用户可以通过自己的学号（十位）注册一个账号，注册后自动登录，只有登录用户才能使用程序所有内容，老用户可以通过主程序侧边栏的信息修改对自己的账户信息进行修改
+
+![pic_info](README.assets/pic_info.png)
+
+**夜间模式**
+
+App 在进入时根据手机本地时间进行日/夜间模式的选择，也可进入主界面后在右上角进行手动切换
+
+![pic_mode](README.assets/pic_mode.png)
+
+**获取新闻**
+
+用户进入后进行页面刷新，从服务器端获取最新的校园新闻，如果自动获取失败，检查网络无误后下拉刷新即可
+
+![pic_news](README.assets/pic_news.png)
+
+**校园趣味地图**
+
+功能暂时故障，修复中
 
 
-# 校园地图：
-## 通过调用高德地图提供的SDK接口和API，实现了导航功能。
-具体实现上，通过AMapNavi接口获取AMapNaviView实例并设置监听，实现地图的初始化，当 AMapNavi 对象初始化成功后，会进入 onInitNaviSuccess 回调函数，在该回调函数中调用路径规划方法计算路径：调用方法calculateWalkRoute实现起点坐标和终点坐标的算路，算路成功后：进 onCalculateRouteSuccess 回调，在该回调函数中，可以进行规划路线显示或开始导航
 
-# 信息发布平台：
-主程序全局变量调度: Application，根据 sharedpreferences 初始化值
-全局常量：Constant
-## Activity：
-### Welcome: 开始动画，根据全局变量确认跳转目标	
-### Login：未登录用户于此登录
-### InfoChange：注册或者修改信息（根据 Application 中的状态进行判断）
-### Main
-	News Fragment
-	Map Fragment
-	Community Fragment
-### 主要组件：
-#### ListView
-#### NavigationView
-#### BottomNavigationView
-#### ImageView
-#### EditText
-#### TextView
-#### Button
-#### Toolbar
-#### Spinner
-#### FloatActionBar
-### 通信工具：Volley
-借鉴网址：https://www.cnblogs.com/mthoutai/p/7043920.html
+**用户留言社区**
 
-![菜单](http://m.qpic.cn/psc?/V128UVJF3dr180/wK0kFdeCHxQUuvx1sBu8JGU0rCCJwQH2szgVQhZ79yxCG4BbWPkvGFvMZf1PzScunwEwMoyMB9C60Mzpji6k2Q!!/mnull&bo=1AJgAgAAAAADB5Y!&rf=photolist&t=5.png)
+点击下方导航栏“圈子”进入功能，可以看到最多 50 条用户的留言，点击右上角的加号可以编辑自己的留言和发送，类似 QQ 空间的说说，暂时仅支持文字功能
 
-# 其他设计
-## 数据库：
-![tup](http://m.qpic.cn/psc?/V128UVJF3dr180/wK0kFdeCHxQUuvx1sBu8JC3zvZF2WBBsWSI0OuWWRhPcstxqvUpM09uhvbexXQzO5VSoWgZXdJKbNgd*iHWHcg!!/mnull&bo=KwTyAAAAAAADB*8!&rf=photolist&t=5.png)
-![tu](http://m.qpic.cn/psc?/V128UVJF3dr180/wK0kFdeCHxQUuvx1sBu8JHLBwUNTLUcyt4h8oyeCV1xULkessV3kwjSsu6f7MRrwvyZN6s6HGDzKBRqQDnJ6BQ!!/mnull&bo=MwMYAQAAAAADBws!&rf=photolist&t=5.png)
-
-## 服务器
-我们是租借阿里云的服务器，然后利用docker技术，开取了一个容器，用来作为此软件的服务器。
+![pic_comment](README.assets/pic_comment.png)
