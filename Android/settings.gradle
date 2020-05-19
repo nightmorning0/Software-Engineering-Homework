@@ -1,0 +1,2 @@
+rootProject.name='xjtuhelper'
+include ':app'

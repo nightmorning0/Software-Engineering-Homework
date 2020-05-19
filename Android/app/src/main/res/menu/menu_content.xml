@@ -1,0 +1,12 @@
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.xjtuhelper.ui.News.NewsContentActivity">
+
+    <item
+        android:id="@+id/tb_nightmode"
+        android:icon="@drawable/day_night"
+        android:title="@string/night_mode"
+        app:showAsAction="always" />
+</menu>
