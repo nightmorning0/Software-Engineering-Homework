@@ -92,11 +92,11 @@ public class Application extends android.app.Application {
     }
 
     public void newsUpdate(){
-        global_news = new ArrayList<>();
         getJSON(new VolleyCallback() {
             @Override
             public void onSuccess(JSONObject response) throws JSONException {
                 // 获取新闻信息
+                global_news = new ArrayList<>();
                 JSONArray data_list = response.getJSONArray("data");
                 for (int i=0; i < data_list.length(); i++) {
                     JSONObject data = data_list.getJSONObject(i);
@@ -112,10 +112,10 @@ public class Application extends android.app.Application {
 
     public void commentsUpdate(){
         // 从服务器获取评论
-        global_comments = new ArrayList<>();
         getJSON(new VolleyCallback() {
             @Override
             public void onSuccess(JSONObject response) throws JSONException {
+                global_comments = new ArrayList<>();
                 JSONArray data_list = response.getJSONArray("comments");
                 for (int i=0; i < data_list.length(); i++) {
                     JSONObject data = data_list.getJSONObject(i);

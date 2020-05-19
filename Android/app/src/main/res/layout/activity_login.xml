@@ -31,46 +31,25 @@
             android:id="@+id/user"
             android:layout_width="300dp"
             android:layout_height="52dp"
-            android:layout_marginTop="60dp"
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/hint_login_id"
             android:inputType="textPersonName"
-            android:textColorHint="@color/colorTextPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layerType="software" />
+            android:textColor="#000000"
+            android:textColorHint="#000000" />
 
         <EditText
             android:id="@+id/pass"
             android:layout_width="300dp"
             android:layout_height="52dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="10dp"
+            android:layout_margin="10dp"
             android:ems="10"
             android:gravity="center"
             android:hint="@string/hint_login_pwd"
             android:inputType="textPassword"
-            android:textColorHint="@color/colorTextPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layerType="software"
-            android:autofillHints="" />
-
-<!--        android:id="@+id/name"-->
-<!--        android:layout_width="300dp"-->
-<!--        android:layout_height="52dp"-->
-<!--        android:layout_marginTop="60dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:ems="10"-->
-<!--        android:gravity="center"-->
-<!--        android:hint="用户名"-->
-<!--        android:inputType="textPersonName"-->
-<!--        android:textColorHint="@color/colorTextPrimary"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
+            android:textColor="#000000"
+            android:textColorHint="#000000" />
 
         <LinearLayout
             android:layout_width="wrap_content"

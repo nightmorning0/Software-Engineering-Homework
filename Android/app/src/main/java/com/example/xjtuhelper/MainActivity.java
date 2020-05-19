@@ -78,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
         // Comments 初始化
         comments =  ((Application)getApplicationContext()).global_comments;
 
-
         // 底部导航
         BottomNavigationView bottom_nav_view = findViewById(R.id.nav_view);
         bottom_nav_view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

@@ -90,11 +90,10 @@ public class MapActivity extends AppCompatActivity implements AMap.OnPOIClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        checkPermission();
         setContentView(R.layout.activity_map);
         mapView=(MapView)findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
-
+        checkPermission();
     }
 
     //请求必要权限
